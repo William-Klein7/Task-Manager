@@ -1,11 +1,12 @@
 * {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-@media screen and (max-width:377px) {
+@media screen and (max-width:360px) {
   body {
-    max-width: 376px;
+    max-width: 360px;
     height: 640px;
     background-color: #F6F2FF;
     border-radius: 20px;
@@ -15,12 +16,12 @@
   /* FIRST PAGE */
   .tk-first-page {
     width: 100%;
-    height: auto;
+    height: 640px;
     display: block;
   }
 
-  .tk-first-page:first-child {
-    width: auto;
+  .tk-first-page .tk-box-img {
+    width: 100%;
     height: auto;
     display: block;
     padding: 87px 9px 26px 31px;
@@ -28,7 +29,8 @@
 
   .tk-first-page .tk-first-title {
     width: 241px;
-    height: 47px;
+    height: auto;
+    display: block;
     font-family: 'Poppins';
     font-weight: 800;
     font-size: 24px;
@@ -38,17 +40,22 @@
     padding-bottom: 86px;
   }
 
-  .tk-first-page a {
+  .tk-first-btn {
+    width: 100%;
+    height: auto;
+    display: block;
+    float: left;
+    padding: 0 27px 34px 293px;
+  }
+
+  .tk-first-btn a {
     width: 40px;
     height: 40px;
     display: grid;
     place-items: center;
-    position: absolute;
     border-radius: 50%;
     border: none;
-    left: 293px;
     cursor: pointer;
-    text-decoration: none;
   }
 }
 
