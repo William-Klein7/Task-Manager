@@ -222,7 +222,7 @@
     color: #000;
   }
 
-  .tk-signup-page .tk-signup-form .tk-input-img {
+  .tk-signup-page .tk-signup-form .tk-input-img[type='file'] {
     display: none;
   }
 
@@ -233,11 +233,12 @@
 
   }
 
-  .tk-signup-page .tk-signup-form .tk-img-perfil img {
+  #img-signup {
     width: 100%;
     height: auto;
     display: table;
     border-radius: 50%;
+    cursor: pointer;
   }
 
   .tk-signup-page .tk-signup-form a {
