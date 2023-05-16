@@ -1,7 +1,7 @@
 * {
-  box-sizing: border-box;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width:360px) {
@@ -11,6 +11,8 @@
     background-color: #F6F2FF;
     border-radius: 20px;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+    z-index: 100;
   }
 
   /* FIRST PAGE */
@@ -56,6 +58,114 @@
     border-radius: 50%;
     border: none;
     cursor: pointer;
+  }
+
+  /* LOGIN PAGE */
+  .tk-login-page {
+    width: 100%;
+    height: 640px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .tk-login-page .tk-login-title {
+    width: 100%;
+    height: auto;
+    display: block;
+    padding: 150px 78px 0 59px;
+  }
+
+  .tk-login-page .tk-login-title .tk-login-img {
+    width: 223px;
+    height: 120px;
+    display: table;
+    background: center url('../images/LoginPage/img-login-page.png') no-repeat;
+    z-index: 200;
+  }
+
+  .tk-login-page .tk-login-title .tk-login-img h1 {
+    width: 122px;
+    height: auto;
+    margin: 17px 41px 60px 60px;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 20px;
+    text-align: center;
+    z-index: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .tk-login-page .tk-login-form {
+    width: 301px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 20px 20px 18px;
+    margin: 0 auto;
+  }
+
+  .tk-login-page .tk-login-form:nth-child(2) {
+    gap: 18px;
+  }
+
+  .tk-login-page .tk-login-form input,
+  .tk-login-page .tk-login-form button {
+    width: 261px;
+    height: 36px;
+    border-radius: 30px;
+    padding: 12px 0 13px 19px;
+    border: none;
+    cursor: pointer;
+  }
+
+  #email::-webkit-input-placeholder {
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    color: #6368D9;
+  }
+
+  #password::-webkit-input-placeholder {
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    color: #6368D9;
+  }
+
+  .tk-login-page .tk-login-form button {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    padding: 0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .tk-login-page .tk-create-account {
+    width: 272px;
+    height: auto;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #9C98A2;
+    margin: 0 auto;
+  }
+
+  .tk-login-page .tk-create-account a {
+    text-decoration: none;
   }
 }
 
