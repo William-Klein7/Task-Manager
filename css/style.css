@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width:360px) {
+@media screen and (max-width:361px) {
   body {
     max-width: 360px;
     height: 640px;
@@ -12,7 +12,6 @@
     border-radius: 20px;
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    z-index: 100;
   }
 
   /* FIRST PAGE */
@@ -33,7 +32,7 @@
     width: 241px;
     height: auto;
     display: block;
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-weight: 800;
     font-size: 24px;
     line-height: 30px;
@@ -112,35 +111,26 @@
   }
 
   .tk-login-page .tk-login-form input,
-  .tk-login-page .tk-login-form button {
+  .tk-login-page .tk-login-form a {
     width: 261px;
     height: 36px;
     border-radius: 30px;
     padding: 12px 0 13px 19px;
     border: none;
     cursor: pointer;
-  }
-
-  #email::-webkit-input-placeholder {
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.02em;
-    color: #6368D9;
+    color: #000;
   }
 
-  #password::-webkit-input-placeholder {
-    font-family: 'Poppins';
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: 0.02em;
-    color: #6368D9;
-  }
 
-  .tk-login-page .tk-login-form button {
-    font-family: 'Poppins';
+  .tk-login-page .tk-login-form a {
+    display: grid;
+    place-items: center;
+    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
@@ -149,12 +139,13 @@
     color: #FFFFFF;
     padding: 0;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
   }
 
   .tk-login-page .tk-create-account {
     width: 272px;
     height: auto;
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 11px;
     line-height: 16px;
@@ -165,6 +156,119 @@
   }
 
   .tk-login-page .tk-create-account a {
+    text-decoration: none;
+  }
+
+  /* SIGNUP PAGE */
+  .tk-signup-page {
+    width: 100%;
+    height: 640px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .tk-signup-page .tk-signup-title {
+    width: 100%;
+    height: auto;
+    display: block;
+    padding: 0 78px 0 59px;
+  }
+
+  .tk-signup-page .tk-signup-title .tk-signup-img {
+    width: 223px;
+    height: 120px;
+    display: table;
+    background: center url('../images/LoginPage/img-login-page.png') no-repeat;
+    z-index: 200;
+  }
+
+  .tk-signup-page .tk-signup-title .tk-signup-img h1 {
+    width: 122px;
+    height: auto;
+    margin: 17px 41px 60px 60px;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 20px;
+    text-align: center;
+    z-index: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .tk-signup-page .tk-signup-form {
+    width: 301px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 20px 20px 18px;
+    margin: 0 auto;
+  }
+
+  .tk-signup-page .tk-signup-form input,
+  .tk-signup-page .tk-signup-form a {
+    width: 261px;
+    height: 36px;
+    border-radius: 30px;
+    padding: 12px 0 13px 19px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    color: #000;
+  }
+
+  .tk-signup-page .tk-signup-form .tk-input-img {
+    display: none;
+  }
+
+  .tk-signup-page .tk-signup-form .tk-img-perfil {
+    width: 150px;
+    height: 150px;
+    display: block;
+
+  }
+
+  .tk-signup-page .tk-signup-form .tk-img-perfil img {
+    width: 100%;
+    height: auto;
+    display: table;
+    border-radius: 50%;
+  }
+
+  .tk-signup-page .tk-signup-form a {
+    display: grid;
+    place-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    padding: 0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+  }
+
+  .tk-signup-page .tk-login {
+    width: 272px;
+    height: auto;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #9C98A2;
+    margin: 0 auto;
+  }
+
+  .tk-signup-page .tk-login a {
     text-decoration: none;
   }
 }
@@ -184,4 +288,41 @@
 
 .tk-color-white {
   color: #F6F2FF;
+}
+
+/* EDIÇÃO DOS PLACEHOLDER */
+#email::-webkit-input-placeholder {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #6368D9;
+}
+
+#password::-webkit-input-placeholder {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #6368D9;
+}
+
+#name::-webkit-input-placeholder {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #6368D9;
+}
+
+#occupation::-webkit-input-placeholder {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #6368D9;
 }

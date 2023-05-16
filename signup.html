@@ -12,26 +12,31 @@
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
-  <section class="tk-login-page">
-    <div class="tk-login-title">
-      <div class="tk-login-img">
-        <h1 class="tk-color-purple">Welcome Back!</h1>
+  <section class="tk-signup-page">
+    <div class="tk-signup-title">
+      <div class="tk-signup-img">
+        <h1 class="tk-color-purple">Welcome</h1>
       </div>
     </div>
-    <form class="tk-login-form">
+    <form class="tk-signup-form">
+      <div class="tk-img-perfil">
+        <img src="images/SignupPage/img-sem-foto.jpg" alt="Perfil" id="img-signup">
+      </div>
+      <input class="tk-input-img" type="file" name="Image" id="foto">
+      <input class="tk-bg-gray" type="text" name="Name" id="name" placeholder="Name">
+      <input class="tk-bg-gray" type="text" name="Occupation" id="occupation" placeholder="Occupation">
       <input class="tk-bg-gray" type="email" name="Email" id="email" placeholder="Email">
       <input class="tk-bg-gray" type="password" name="Password" id="password" placeholder="Password">
-      <a href="signup.html" class="tk-bg-purple tk-color-white">Log in</a>
+      <a class="tk-bg-purple tk-color-white">Save</a>
     </form>
-    <div class="tk-create-account">
-      <p>Dont have an account? <a href="signup.html">Create account.</a></p>
+    <div class="tk-login">
+      <p>Already have an accout? <a href="login.html">Log in</a></p>
     </div>
   </section>
-  <script src="js/login.js"></script>
+  <script src="js/signup.js"></script>
 </body>
 
 </html>
