@@ -101,7 +101,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 18px;
+    gap: 10px;
     padding: 20px 20px 18px;
     margin: 0 auto;
   }
@@ -111,7 +111,7 @@
   }
 
   .tk-login-page .tk-login-form input,
-  .tk-login-page .tk-login-form a {
+  .tk-login-page .tk-div-btn button {
     width: 261px;
     height: 36px;
     border-radius: 30px;
@@ -123,13 +123,18 @@
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.02em;
-    color: #000;
+    color: #6368D9;
   }
 
-
-  .tk-login-page .tk-login-form a {
+  .tk-login-page .tk-div-btn {
+    width: 100%;
+    height: auto;
     display: grid;
     place-items: center;
+    margin-bottom: 18px;
+  }
+
+  .tk-login-page .tk-div-btn button {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 16px;
@@ -140,6 +145,7 @@
     padding: 0;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-decoration: none;
+
   }
 
   .tk-login-page .tk-create-account {
