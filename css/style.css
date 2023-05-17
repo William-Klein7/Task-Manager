@@ -106,8 +106,8 @@
     margin: 0 auto;
   }
 
-  .tk-login-page .tk-login-form:nth-child(2) {
-    gap: 18px;
+  .tk-login-page .tk-login-form button {
+    margin-top: 8px;
   }
 
   .tk-login-page .tk-login-form input,
@@ -201,13 +201,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 18px;
+    gap: 10px;
     padding: 20px 20px 18px;
     margin: 0 auto;
   }
 
   .tk-signup-page .tk-signup-form input,
-  .tk-signup-page .tk-signup-form a {
+  .tk-signup-page .tk-signup-form button {
     width: 261px;
     height: 36px;
     border-radius: 30px;
@@ -219,7 +219,11 @@
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.02em;
-    color: #000;
+    color: #6368D9;
+  }
+
+  .tk-signup-page .tk-signup-form button {
+    margin-top: 8px;
   }
 
   .tk-signup-page .tk-signup-form .tk-input-img[type='file'] {
@@ -234,14 +238,14 @@
   }
 
   #img-signup {
-    width: 100%;
-    height: auto;
+    width: 150px;
+    height: 150px;
     display: table;
     border-radius: 50%;
     cursor: pointer;
   }
 
-  .tk-signup-page .tk-signup-form a {
+  .tk-signup-page .tk-signup-form button {
     display: grid;
     place-items: center;
     font-family: 'Poppins', sans-serif;
@@ -292,34 +296,10 @@
 }
 
 /* EDIÇÃO DOS PLACEHOLDER */
-#email::-webkit-input-placeholder {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0.02em;
-  color: #6368D9;
-}
-
-#password::-webkit-input-placeholder {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0.02em;
-  color: #6368D9;
-}
-
-#name::-webkit-input-placeholder {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0.02em;
-  color: #6368D9;
-}
-
-#occupation::-webkit-input-placeholder {
+#emailId::-webkit-input-placeholder,
+#occupationId::-webkit-input-placeholder,
+#passwordId::-webkit-input-placeholder,
+#nameId::-webkit-input-placeholder {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 16px;
