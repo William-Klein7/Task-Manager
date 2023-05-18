@@ -39,6 +39,6 @@ function login() {
 		alert("Senha Incorreta");
 	}
 	if (verificarEmail(email) && verificarPassword(password)) {
-		window.location.href = "home.html";
+		window.location.href = "app.html";
 	}
 }
