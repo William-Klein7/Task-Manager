@@ -46,7 +46,7 @@
     height: auto;
     display: block;
     float: left;
-    padding: 0 27px 34px 293px;
+    padding: 0 27px 0 293px;
   }
 
   .tk-first-btn a {
@@ -213,7 +213,7 @@
   }
 
   .tk-signup-page .tk-signup-form input,
-  .tk-signup-page .tk-signup-form button {
+  .tk-signup-page .tk-button-save button {
     width: 261px;
     height: 36px;
     border-radius: 30px;
@@ -228,8 +228,29 @@
     color: #6368D9;
   }
 
-  .tk-signup-page .tk-signup-form button {
-    margin-top: 8px;
+  .tk-signup-page .tk-button-save button {
+    display: grid;
+    place-items: center;
+    display: grid;
+    place-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    padding: 0;
+    color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    margin-bottom: 18px;
+  }
+
+  .tk-signup-page .tk-button-save {
+    width: 100%;
+    height: auto;
+    display: grid;
+    place-items: center;
   }
 
   .tk-signup-page .tk-signup-form .tk-input-img[type='file'] {
@@ -249,21 +270,6 @@
     display: table;
     border-radius: 50%;
     cursor: pointer;
-  }
-
-  .tk-signup-page .tk-signup-form button {
-    display: grid;
-    place-items: center;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    letter-spacing: 0.02em;
-    color: #FFFFFF;
-    padding: 0;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-decoration: none;
   }
 
   .tk-signup-page .tk-login {

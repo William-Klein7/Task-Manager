@@ -4,6 +4,7 @@ var arrName = [];
 var arrEmail = [];
 var arrOccupation = [];
 var arrPassword = [];
+var arrPicture = [];
 
 photo.addEventListener("click", () => {
 	file.click();
@@ -60,55 +61,45 @@ function validarOccupation(occupation) {
 	}
 }
 function validarSenha(senha) {
-	const regexMaiuscula = /[A-Z]/;
-	const regexMinuscula = /[a-z]/;
-	const regexDigito = /[0-9]/;
+	const regexSenha = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{6,})$/;
 
-	if (
-		senha.match(regexMaiuscula) &&
-		senha.match(regexMinuscula) &&
-		senha.match(regexDigito)
-	) {
+	if (senha.match(regexSenha)) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-//FUNÇÕES PARA SALVAR DADOS DENTRO DE UM ARRAY
-function saveName(nome) {
-	if (localStorage.Name) {
-		arrName = JSON.parse(localStorage.getItem("Name"));
-	}
-	arrName.push(nome);
-	document.getElementById("nameId").value = "";
-	localStorage.Name = JSON.stringify(arrName);
-}
+//FUNÇÃO PARA SALVAR OS DADOS INFORMADOS PELO USUARIO
+function salvarUsuario(nome, email, senha, ocupacao, foto) {
+	if (typeof Storage !== "undefined") {
+		var arrUsuarios = localStorage.getItem("Usuarios");
+		if (arrUsuarios) {
+			arrUsuarios = JSON.parse(arrUsuarios);
+		} else {
+			arrUsuarios = [];
+		}
 
-function saveOccupation(occupation) {
-	if (localStorage.Occupation) {
-		arrOccupation = JSON.parse(localStorage.getItem("Occupation"));
-	}
-	arrOccupation.push(occupation);
-	document.getElementById("occupationId").value = "";
-	localStorage.Occupation = JSON.stringify(arrOccupation);
-}
-function saveEmail(email) {
-	if (localStorage.Email) {
-		arrEmail = JSON.parse(localStorage.getItem("Email"));
-	}
+		var usuario = {
+			nome: nome,
+			email: email,
+			senha: senha,
+			ocupacao: ocupacao,
+			foto: foto,
+		};
 
-	arrEmail.push(email);
-	document.getElementById("emailId").value = "";
-	localStorage.Email = JSON.stringify(arrEmail);
-}
-function savePassword(password) {
-	if (localStorage.Password) {
-		arrPassword = JSON.parse(localStorage.getItem("Password"));
+		arrUsuarios.push(usuario);
+
+		// Converte o array de objetos para uma string JSON
+		var arrUsuariosJSON = JSON.stringify(arrUsuarios);
+
+		// Salva o array de usuários JSON no localStorage
+		localStorage.setItem("Usuarios", arrUsuariosJSON);
+
+		alert("Usuário salvo com sucesso!");
+	} else {
+		alert("Error");
 	}
-	arrPassword.push(password);
-	document.getElementById("passwordId").value = "";
-	localStorage.Password = JSON.stringify(arrPassword);
 }
 
 //FUNÇÃO PRINCIPAL
@@ -117,6 +108,7 @@ function save() {
 	const occupation = document.getElementById("occupationId").value;
 	const email = document.getElementById("emailId").value;
 	const password = document.getElementById("passwordId").value;
+	const foto = document.getElementById("foto").value;
 
 	if (!validarNome(nome)) {
 		alert("Invalid name");
@@ -147,9 +139,7 @@ function save() {
 		validarEmailExistente(email) &&
 		validarSenha(password)
 	) {
-		saveName(nome);
-		saveOccupation(occupation);
-		saveEmail(email);
-		savePassword(password);
+		salvarUsuario(nome, email, password, occupation, foto);
+		window.location.href = "Login.html";
 	}
 }

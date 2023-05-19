@@ -1,42 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sign Up</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-  <section class="tk-signup-page">
-    <div class="tk-signup-title">
-      <div class="tk-signup-img">
-        <h1 class="tk-color-purple">Welcome</h1>
-      </div>
-    </div>
-    <form class="tk-signup-form">
-      <div class="tk-img-perfil">
-        <img src="images/SignupPage/img-sem-foto.jpg" alt="Perfil" id="img-signup">
-      </div>
-      <input class="tk-input-img" type="file" name="Image" id="foto">
-      <input class="tk-bg-gray" type="text" name="Name" id="nameId" placeholder="Name">
-      <input class="tk-bg-gray" type="text" name="Occupation" id="occupationId" placeholder="Occupation">
-      <input class="tk-bg-gray" type="email" name="Email" id="emailId" placeholder="Email">
-      <input class="tk-bg-gray" type="password" name="Password" id="passwordId" placeholder="Password">
-      <button class="tk-bg-purple tk-color-white" onclick="save()">Save</button>
-    </form>
-    <div class="tk-login">
-      <p>Already have an accout? <a href="login.html">Log in</a></p>
-    </div>
-  </section>
-  <script src="js/signup.js"></script>
-</body>
-
+	<body>
+		<section class="tk-signup-page">
+			<div class="tk-signup-title">
+				<div class="tk-signup-img">
+					<h1 class="tk-color-purple">Welcome</h1>
+				</div>
+			</div>
+			<form class="tk-signup-form">
+				<div class="tk-img-perfil">
+					<img
+						src="images/SignupPage/img-sem-foto.jpg"
+						alt="Perfil"
+						id="img-signup"
+					/>
+				</div>
+				<input class="tk-input-img" type="file" name="Image" id="foto" />
+				<input
+					class="tk-bg-gray"
+					type="text"
+					name="Name"
+					id="nameId"
+					placeholder="Name"
+				/>
+				<input
+					class="tk-bg-gray"
+					type="text"
+					name="Occupation"
+					id="occupationId"
+					placeholder="Occupation"
+				/>
+				<input
+					class="tk-bg-gray"
+					type="email"
+					name="Email"
+					id="emailId"
+					placeholder="Email"
+				/>
+				<input
+					class="tk-bg-gray"
+					type="password"
+					name="Password"
+					id="passwordId"
+					placeholder="Password"
+				/>
+			</form>
+			<div class="tk-button-save">
+				<button class="tk-bg-purple tk-color-white" onclick="save()">
+					Save
+				</button>
+			</div>
+			<div class="tk-login">
+				<p>Already have an accout? <a href="login.html">Log in</a></p>
+			</div>
+		</section>
+		<script src="js/signup.js"></script>
+	</body>
 </html>
