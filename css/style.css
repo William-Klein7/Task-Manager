@@ -480,6 +480,7 @@
     letter-spacing: 0.02em;
   }
 
+  /* FOOTER */
   footer {
     width: auto;
     max-width: 292px;
@@ -521,6 +522,243 @@
     height: 48px;
   }
 
+  /* MODAL */
+  .tk-container-modal {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 51px 38px 66px;
+  }
+
+  .tk-container-modal .tk-box-title-modal {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .tk-container-modal .tk-box-title-modal button {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .tk-container-modal .tk-box-title-modal h1 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  .tk-container-modal .tk-form-modal {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  .tk-container-modal .tk-form-modal .tk-inputs-modal {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tk-container-modal .tk-form-modal .tk-inputs-modal h1 {
+    width: auto;
+    height: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+  }
+
+  .tk-container-modal .tk-form-modal .tk-inputs-modal input {
+    width: 284px;
+    height: 36px;
+    border: 1px solid #6368D9;
+    border-radius: 20px;
+    margin-bottom: 13px;
+    font-family: 'Poppins';
+    font-size: 14px;
+    background-color: #F6F2FF;
+  }
+
+  .tk-container-modal .tk-form-modal .tk-inputs-modal div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tk-container-modal .tk-form-modal .tk-inputs-modal .tk-modal-h1 {
+    margin-right: 76px;
+  }
+
+  .tk-container-modal .tk-form-modal .tk-inputs-modal .tk-modal-input {
+    margin-right: 12px;
+  }
+
+  .tk-container-modal .tk-form-modal .tk-inputs-modal input[type='time'] {
+    width: 136px;
+    height: 36px;
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .tk-container-modal .tk-form-modal .tk-inputs-modal input[type='date'] {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 20px;
+    padding: 0 18px;
+    background: url('../images/Footer/icon\ _Calendar_.svg') no-repeat;
+    background-position: 18px;
+    background-size: 20px;
+  }
+
+  .tk-container-modal .tk-form-modal .tk-inputs-modal input[type='date']::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+  }
+
+  .tk-container-modal .tk-form-modal .tk-inputs-modal input[type='time'] {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 0 18px;
+    background: url('../images/ModalPage/icon\ _clock_.svg') no-repeat;
+    background-position: 18px;
+    background-size: 20px;
+  }
+
+  .tk-container-modal .tk-form-modal .tk-inputs-modal input[type='time']::-webkit-calendar-picker-indicator {
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+  }
+
+  .tk-container-modal .tk-categories-modal {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .tk-container-modal .tk-categories-modal h1 {
+    height: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+  }
+
+  .tk-container-modal .tk-categories-modal div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .tk-container-modal .tk-categories-modal button[name='categories'] {
+    height: 22px;
+    display: grid;
+    place-items: center;
+    padding: 0 16px;
+    border-radius: 30px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    background-color: #D1D0F9;
+    color: #6368D9
+  }
+
+  .tk-container-modal .tk-categories-modal button[name='categories'].selected {
+    background-color: #6368D9;
+    color: #F6F2FF;
+  }
+
+  .tk-container-modal .tk-description-btn-modal {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tk-container-modal .tk-description-btn-modal h1 {
+    height: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    margin-bottom: 12px;
+  }
+
+  .tk-container-modal .tk-description-btn-modal textarea {
+    max-width: 284px;
+    min-width: 284px;
+    min-height: 107px;
+    max-height: 107px;
+    display: block;
+    border: 1px solid #6368D9;
+    border-radius: 20px;
+    margin-bottom: 36px;
+  }
+
+  .tk-container-modal .tk-modal-save {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+  }
+
+  .tk-container-modal .tk-modal-save button:first-child {
+    width: 39px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    border: none;
+  }
+
+  .tk-container-modal .tk-modal-save button:last-child {
+    width: 157px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+  }
 }
 
 /* UTILITY CLASSES */

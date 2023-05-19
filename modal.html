@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Create task</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body>
+		<div class="tk-container-modal">
+			<div class="tk-box-title-modal">
+				<button>
+					<img src="images/ModalPage/arrow-modal-icon.svg" alt="" />
+				</button>
+				<h1 class="tk-color-purple">Create task!</h1>
+			</div>
+			<form class="tk-form-modal">
+				<div class="tk-inputs-modal">
+					<h1 class="tk-color-purple">Title</h1>
+					<input
+						class="tk-color-purple"
+						type="text"
+						name="Title"
+						id="titleId"
+					/>
+					<h1 class="tk-color-purple">Date</h1>
+					<input class="tk-color-purple" type="date" name="Date" id="dateId" />
+					<div>
+						<h1 class="tk-color-purple tk-modal-h1">Start time</h1>
+						<h1 class="tk-color-purple">End time</h1>
+						<input
+							class="tk-color-purple tk-modal-input tk-color-purple"
+							type="time"
+							name="Time"
+							id="startId"
+						/>
+						<input class="tk-color-purple" type="time" name="Time" id="endId" />
+					</div>
+				</div>
+				<div class="tk-categories-modal">
+					<h1 class="tk-color-purple">Category</h1>
+					<div>
+						<button type="button" id="" name="categories">College stuff</button>
+						<button type="button" id="" name="categories">Work</button>
+						<button type="button" id="" name="categories">Social life</button>
+						<button type="button" id="" name="categories">Study</button>
+						<button type="button" id="" name="categories">
+							Personal project
+						</button>
+						<button type="button" id="" name="categories">Home</button>
+					</div>
+				</div>
+				<div class="tk-description-btn-modal">
+					<h1 class="tk-color-purple">Description</h1>
+					<textarea name="description" id="descriptionId"></textarea>
+				</div>
+			</form>
+			<div class="tk-modal-save">
+				<button class="tk-bg-gray">
+					<img
+						src="images/ModalPage/icon _trash delete bin_.svg"
+						alt="Trash Can"
+					/>
+				</button>
+				<button class="tk-bg-purple">Save task</button>
+			</div>
+		</div>
+		<script src="js/main.js"></script>
+	</body>
+</html>
