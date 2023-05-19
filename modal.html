@@ -17,7 +17,7 @@
 	<body>
 		<div class="tk-container-modal">
 			<div class="tk-box-title-modal">
-				<button>
+				<button onclick="redirecionarParaHome()">
 					<img src="images/ModalPage/arrow-modal-icon.svg" alt="" />
 				</button>
 				<h1 class="tk-color-purple">Create task!</h1>
@@ -48,14 +48,20 @@
 				<div class="tk-categories-modal">
 					<h1 class="tk-color-purple">Category</h1>
 					<div>
-						<button type="button" id="" name="categories">College stuff</button>
-						<button type="button" id="" name="categories">Work</button>
-						<button type="button" id="" name="categories">Social life</button>
-						<button type="button" id="" name="categories">Study</button>
-						<button type="button" id="" name="categories">
+						<button type="button" id="college-btn" name="categories">
+							College stuff
+						</button>
+						<button type="button" id="work-btn" name="categories">Work</button>
+						<button type="button" id="social-btn" name="categories">
+							Social life
+						</button>
+						<button type="button" id="study-btn" name="categories">
+							Study
+						</button>
+						<button type="button" id="project-btn" name="categories">
 							Personal project
 						</button>
-						<button type="button" id="" name="categories">Home</button>
+						<button type="button" id="home-btn" name="categories">Home</button>
 					</div>
 				</div>
 				<div class="tk-description-btn-modal">
@@ -64,13 +70,13 @@
 				</div>
 			</form>
 			<div class="tk-modal-save">
-				<button class="tk-bg-gray">
+				<button class="tk-bg-gray" onclick="redirecionarParaHome()">
 					<img
 						src="images/ModalPage/icon _trash delete bin_.svg"
 						alt="Trash Can"
 					/>
 				</button>
-				<button class="tk-bg-purple">Save task</button>
+				<button class="tk-bg-purple" onclick="saveTask()">Save task</button>
 			</div>
 		</div>
 		<script src="js/main.js"></script>

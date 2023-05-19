@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-
-</head>
-
-<body>
-  <section class="tk-login-page">
-    <div class="tk-login-title">
-      <div class="tk-login-img">
-        <h1 class="tk-color-purple">Welcome Back!</h1>
-      </div>
-    </div>
-    <form class="tk-login-form">
-      <input class="tk-bg-gray" type="email" name="Email" id="email" placeholder="Email">
-      <input class="tk-bg-gray" type="password" name="Password" id="password" placeholder="Password">
-    </form>
-    <div class="tk-div-btn">
-      <button class="tk-bg-purple tk-color-white" onclick="login()">Log in</button>
-    </div>
-    <div class="tk-create-account">
-      <p>Dont have an account? <a href="signup.html">Create account.</a></p>
-    </div>
-  </section>
-  <script src="js/login.js"></script>
-</body>
-
+	<body>
+		<section class="tk-login-page">
+			<div class="tk-login-title">
+				<div class="tk-login-img">
+					<h1 class="tk-color-purple">Welcome Back!</h1>
+				</div>
+			</div>
+			<form class="tk-login-form">
+				<input
+					class="tk-bg-gray"
+					type="email"
+					name="Email"
+					id="email"
+					placeholder="Email"
+				/>
+				<input
+					class="tk-bg-gray"
+					type="password"
+					name="Password"
+					id="password"
+					placeholder="Password"
+				/>
+			</form>
+			<div class="tk-div-btn">
+				<button class="tk-bg-purple tk-color-white" onclick="login()">
+					Log in
+				</button>
+			</div>
+			<div class="tk-create-account">
+				<p>Dont have an account? <a href="signup.html">Create account.</a></p>
+			</div>
+		</section>
+		<script src="js/main.js"></script>
+	</body>
 </html>

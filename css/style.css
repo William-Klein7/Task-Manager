@@ -599,6 +599,7 @@
     font-family: 'Poppins';
     font-size: 14px;
     background-color: #F6F2FF;
+    padding: 0 18px;
   }
 
   .tk-container-modal .tk-form-modal .tk-inputs-modal div {
@@ -614,18 +615,11 @@
     margin-right: 12px;
   }
 
-  .tk-container-modal .tk-form-modal .tk-inputs-modal input[type='time'] {
-    width: 136px;
-    height: 36px;
-    display: block;
-    margin-bottom: 0;
-  }
 
   .tk-container-modal .tk-form-modal .tk-inputs-modal input[type='date'] {
     display: flex;
     flex-direction: row-reverse;
     gap: 20px;
-    padding: 0 18px;
     background: url('../images/Footer/icon\ _Calendar_.svg') no-repeat;
     background-position: 18px;
     background-size: 20px;
@@ -638,12 +632,14 @@
   }
 
   .tk-container-modal .tk-form-modal .tk-inputs-modal input[type='time'] {
+    width: 136px;
+    height: 36px;
+    margin-bottom: 0;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
     gap: 15px;
-    padding: 0 18px;
     background: url('../images/ModalPage/icon\ _clock_.svg') no-repeat;
     background-position: 18px;
     background-size: 20px;
@@ -727,6 +723,7 @@
     border: 1px solid #6368D9;
     border-radius: 20px;
     margin-bottom: 36px;
+    background-color: #F6F2FF;
   }
 
   .tk-container-modal .tk-modal-save {
