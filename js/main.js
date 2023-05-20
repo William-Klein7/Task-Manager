@@ -92,15 +92,16 @@ function fazerLogout() {
 window.addEventListener("load", verificarLogin);
 
 function verificarCredenciais(email, senha) {
-	var usuarios = localStorage.getItem("Usuarios");
+	let usuarios = localStorage.getItem("Usuarios");
 	if (usuarios) {
 		usuarios = JSON.parse(usuarios);
 
-		for (var i = 0; i < usuarios.length; i++) {
+		for (let i = 0; i < usuarios.length; i++) {
 			var usuario = usuarios[i];
 			if (usuario.email === email && usuario.senha === senha) {
 				console.log("Credenciais válidas. Usuário encontrado:", usuario);
 				fazerLogin();
+
 				return true;
 			}
 		}
@@ -115,8 +116,69 @@ function login() {
 	const password = document.getElementById("password").value;
 
 	verificarCredenciais(email, password);
+	salvarEmail(email);
+}
+function salvarEmail(email) {
+	localStorage.setItem("email", email);
 }
 
 function redirecionarParaHome() {
 	window.location.href = "app.html";
 }
+function createTask() {
+	window.location.href = "modal.html";
+}
+
+//FUNÇÕES DA HOME
+function loadingBar(perCent) {
+	const loadingBarId = document.getElementById("loadingBarId");
+	const loadingBarP = document.getElementById("loadingBarP");
+	loadingBarId.style.width = perCent + "%";
+	loadingBarP.innerHTML = perCent + "% completed";
+}
+loadingBar(100);
+
+function taskCounter(college, work, study, personal, social, home) {
+	const collegeP = document.getElementById("collegeP");
+	const workP = document.getElementById("workP");
+	const studyP = document.getElementById("studyP");
+	const personalP = document.getElementById("personalP");
+	const socialP = document.getElementById("socialP");
+	const homeP = document.getElementById("homeP");
+
+	console.log(collegeP);
+	collegeP.innerHTML = college + " tasks";
+	workP.innerHTML = work + " tasks";
+	studyP.innerHTML = study + " tasks";
+	personalP.innerHTML = personal + " tasks";
+	socialP.innerHTML = social + " tasks";
+	homeP.innerHTML = home + " tasks";
+}
+taskCounter(0, 0, 0, 0, 0, 0);
+
+function showName() {
+	const nameP = document.getElementById("nameP");
+	const picture = document.getElementById("pictureId");
+	let usuarios = localStorage.getItem("Usuarios");
+	let email = localStorage.getItem("email");
+	if (usuarios) {
+		usuarios = JSON.parse(usuarios);
+
+		for (let i = 0; i < usuarios.length; i++) {
+			var usuario = usuarios[i];
+			if (usuario.email === email) {
+				nameP.innerHTML = usuario.nome + "!";
+				if (usuario.foto === "") {
+					picture.src = "images/SignupPage/img-sem-foto.jpg";
+				} else {
+					picture.src = usuario.foto;
+				}
+				return;
+			}
+		}
+	}
+	console.log(nameP);
+	console.log(usuario.nome);
+	console.log(typeof usuario.nome);
+}
+showName();

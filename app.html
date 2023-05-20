@@ -1,100 +1,113 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Home</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+	<body>
+		<section class="tk-home-section">
+			<div class="tk-hello-name">
+				<img
+					src="images/SignupPage/img-sem-foto.jpg"
+					alt="Picture"
+					id="pictureId"
+				/>
+				<div class="tk-hello-text">
+					<h1 class="tk-color-purple">Hello</h1>
+					<p class="tk-color-purple" id="nameP">asdas</p>
+				</div>
+			</div>
 
-<body>
-  <section class="tk-home-section">
-    <div class="tk-hello-name">
-      <img src="images/SignupPage/img-sem-foto.jpg" alt="">
-      <div class="tk-hello-text">
-        <h1 class="tk-color-purple">Hello</h1>
-        <h2 class="tk-color-purple" id="h2-name">Shafa Salsabilla!</h2>
-      </div>
+			<p class="tk-color-purple tk-p">Let’s check out your today’s task</p>
 
-    </div>
+			<div class="tk-progress-bar-details tk-bg-purple">
+				<p class="tk-color-white" id="loadingBarP"></p>
+				<div class="tk-loading-bar">
+					<div id="loadingBarId"></div>
+				</div>
+				<h1 class="tk-color-white">You have 3 more tasks to do!</h1>
+				<button class="tk-color-purple">Details</button>
+			</div>
 
-    <p class="tk-color-purple tk-p">Let’s check out your today’s task</p>
+			<p class="tk-color-purple tk-tags-categories-p">Task Categories</p>
+			<div class="tk-tags-categories">
+				<ul>
+					<li class="tk-bg-gray">
+						<div class="tk-text-li">
+							<h1 class="tk-color-purple">College stuff</h1>
+							<p class="tk-color-purple" id="collegeP"></p>
+						</div>
+						<img src="images/HomePage/icon _university_.svg" alt="" />
+					</li>
+					<li class="tk-bg-gray">
+						<div class="tk-text-li">
+							<h1 class="tk-color-purple">Work</h1>
+							<p class="tk-color-purple" id="workP"></p>
+						</div>
+						<img src="images/HomePage/icon _work alt bag_.svg" alt="" />
+					</li>
+					<li class="tk-bg-gray">
+						<div class="tk-text-li">
+							<h1 class="tk-color-purple">Study</h1>
+							<p class="tk-color-purple" id="studyP"></p>
+						</div>
+						<img src="images/HomePage/icon _diary_.svg" alt="" />
+					</li>
+					<li class="tk-bg-gray">
+						<div class="tk-text-li">
+							<h1 class="tk-color-purple">Personal project</h1>
+							<p class="tk-color-purple" id="personalP"></p>
+						</div>
+						<img src="images/HomePage/icon _folder file project_.svg" alt="" />
+					</li>
+					<li class="tk-bg-gray">
+						<div class="tk-text-li">
+							<h1 class="tk-color-purple">Social life</h1>
+							<p class="tk-color-purple" id="socialP"></p>
+						</div>
+						<img src="images/HomePage/icon _Chat_.svg" alt="" />
+					</li>
+					<li class="tk-bg-gray">
+						<div class="tk-text-li">
+							<h1 class="tk-color-purple">Home</h1>
+							<p class="tk-color-purple" id="homeP">36 tasks</p>
+						</div>
+						<img src="images/HomePage/icon _home outline_.svg" alt="" />
+					</li>
+				</ul>
+			</div>
 
-    <div class="tk-progress-bar-details tk-bg-purple">
-      <p class="tk-color-white">62.5% completed</p>
-      <div class="tk-loading-bar">
-        <div></div>
-      </div>
-      <h1 class="tk-color-white">You have 3 more tasks to do!</h1>
-      <button class="tk-color-purple">Details</button>
-    </div>
+			<footer>
+				<div class="tk-footer-btns">
+					<button class="tk-footer-btns-menu">
+						<img src="images/Footer/icon _home_.svg" alt="" />
+					</button>
+					<button class="tk-footer-btns-menu">
+						<img src="images/Footer/icon _Calendar_.svg" alt="" />
+					</button>
+					<button class="tk-create-task" onclick="createTask()">
+						<img src="images/Footer/icon _plus circle_.svg" alt="" />
+					</button>
+					<button class="tk-footer-btns-menu">
+						<img src="images/Footer/icon _bell_.svg" alt="" />
+					</button>
+					<button class="tk-footer-btns-menu">
+						<img src="images/Footer/icon _profile circle_.svg" alt="" />
+					</button>
+				</div>
+			</footer>
+		</section>
 
-    <p class="tk-color-purple tk-tags-categories-p">Task Categories</p>
-    <div class="tk-tags-categories">
-      <ul>
-        <li class="tk-bg-gray">
-          <div class="tk-text-li">
-            <h1 class="tk-color-purple">College stuff</h1>
-            <p class="tk-color-purple">27 tasks</p>
-          </div>
-          <img src="images/HomePage/icon _university_.svg" alt="">
-        </li>
-        <li class="tk-bg-gray">
-          <div class="tk-text-li">
-            <h1 class="tk-color-purple">Work</h1>
-            <p class="tk-color-purple">11 tasks</p>
-          </div>
-          <img src="images/HomePage/icon _work alt bag_.svg" alt="">
-        </li>
-        <li class="tk-bg-gray">
-          <div class="tk-text-li">
-            <h1 class="tk-color-purple">Study</h1>
-            <p class="tk-color-purple">18 tasks</p>
-          </div>
-          <img src="images/HomePage/icon _diary_.svg" alt="">
-        </li>
-        <li class="tk-bg-gray">
-          <div class="tk-text-li">
-            <h1 class="tk-color-purple">Personal project</h1>
-            <p class="tk-color-purple">4 tasks</p>
-          </div>
-          <img src="images/HomePage/icon _folder file project_.svg" alt="">
-        </li>
-        <li class="tk-bg-gray">
-          <div class="tk-text-li">
-            <h1 class="tk-color-purple">Social life</h1>
-            <p class="tk-color-purple">10 tasks</p>
-          </div>
-          <img src="images/HomePage/icon _Chat_.svg" alt="">
-        </li>
-        <li class="tk-bg-gray">
-          <div class="tk-text-li">
-            <h1 class="tk-color-purple">Home</h1>
-            <p class="tk-color-purple">36 tasks</p>
-          </div>
-          <img src="images/HomePage/icon _home outline_.svg" alt="">
-        </li>
-      </ul>
-    </div>
-    <footer>
-      <div class="tk-footer-btns">
-        <button class="tk-footer-btns-menu"><img src="images/Footer/icon _home_.svg" alt=""></button>
-        <button class="tk-footer-btns-menu"><img src="images/Footer/icon _Calendar_.svg" alt=""></button>
-        <button class="tk-create-task"><img src="images/Footer/icon _plus circle_.svg" alt=""></button>
-        <button class="tk-footer-btns-menu"><img src="images/Footer/icon _bell_.svg" alt=""></button>
-        <button class="tk-footer-btns-menu"><img src="images/Footer/icon _profile circle_.svg" alt=""></button>
-      </div>
-    </footer>
-  </section>
-
-  <script src="js/main.js"></script>
-</body>
-
+		<script src="js/main.js"></script>
+	</body>
 </html>

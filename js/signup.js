@@ -108,7 +108,7 @@ function save() {
 	const occupation = document.getElementById("occupationId").value;
 	const email = document.getElementById("emailId").value;
 	const password = document.getElementById("passwordId").value;
-	const foto = document.getElementById("foto").value;
+	const foto = document.getElementById("img-signup").src;
 
 	if (!validarNome(nome)) {
 		alert("Invalid name");
