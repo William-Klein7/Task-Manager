@@ -100,8 +100,9 @@ function verificarCredenciais(email, senha) {
 			var usuario = usuarios[i];
 			if (usuario.email === email && usuario.senha === senha) {
 				console.log("Credenciais válidas. Usuário encontrado:", usuario);
+				usuario = JSON.stringify(usuario);
+				localStorage.setItem("UsuarioLogadoInfo", usuario);
 				fazerLogin();
-
 				return true;
 			}
 		}
@@ -116,14 +117,13 @@ function login() {
 	const password = document.getElementById("password").value;
 
 	verificarCredenciais(email, password);
-	salvarEmail(email);
-}
-function salvarEmail(email) {
-	localStorage.setItem("email", email);
 }
 
 function redirecionarParaHome() {
 	window.location.href = "app.html";
+}
+function redirecionarParaCalendar() {
+	window.location.href = "calendar.html";
 }
 function createTask() {
 	window.location.href = "modal.html";
@@ -159,26 +159,51 @@ taskCounter(0, 0, 0, 0, 0, 0);
 function showName() {
 	const nameP = document.getElementById("nameP");
 	const picture = document.getElementById("pictureId");
-	let usuarios = localStorage.getItem("Usuarios");
-	let email = localStorage.getItem("email");
-	if (usuarios) {
-		usuarios = JSON.parse(usuarios);
-
-		for (let i = 0; i < usuarios.length; i++) {
-			var usuario = usuarios[i];
-			if (usuario.email === email) {
-				nameP.innerHTML = usuario.nome + "!";
-				if (usuario.foto === "") {
-					picture.src = "images/SignupPage/img-sem-foto.jpg";
-				} else {
-					picture.src = usuario.foto;
-				}
-				return;
-			}
-		}
+	let usuario = localStorage.getItem("UsuarioLogadoInfo");
+	usuario = JSON.parse(usuario);
+	console.log(usuario);
+	nameP.innerHTML = usuario.nome + "!";
+	if (usuario.foto === "") {
+		picture.src = "images/SignupPage/img-sem-foto.jpg";
+	} else {
+		picture.src = usuario.foto;
 	}
-	console.log(nameP);
-	console.log(usuario.nome);
-	console.log(typeof usuario.nome);
+	return;
 }
 showName();
+
+function imprimirDatas() {
+	var container = document.getElementById("container");
+	var cards = container.getElementsByClassName("card");
+	var currentDate = new Date();
+	currentDate.setDate(currentDate.getDate() - 3); // Subtrai 3 dias
+
+	var monthNames = [
+		"Jan",
+		"Feb",
+		"Mar",
+		"Apr",
+		"May",
+		"Jun",
+		"Jul",
+		"Aug",
+		"Sep",
+		"Oct",
+		"Nov",
+		"Dec",
+	];
+
+	for (var i = 0; i < cards.length; i++) {
+		var card = cards[i];
+		var month = monthNames[currentDate.getMonth()];
+		var day = currentDate.getDate();
+		card.innerHTML = month + " " + day;
+
+		currentDate.setDate(currentDate.getDate() + 1);
+
+		if (i >= 11) {
+			break;
+		}
+	}
+}
+imprimirDatas();

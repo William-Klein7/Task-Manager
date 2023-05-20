@@ -463,9 +463,13 @@
   }
 
   .tk-home-section .tk-tags-categories .tk-text-li {
-    max-width: 53px;
+    width: 53px;
     height: auto;
     display: block;
+  }
+
+  .tk-home-section .tk-tags-categories .tk-li-study img {
+    width: 20px;
   }
 
   .tk-home-section .tk-tags-categories .tk-text-li h1 {
@@ -481,16 +485,17 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
-    text-align: center;
     letter-spacing: 0.02em;
   }
 
   /* FOOTER */
   footer {
-    width: auto;
-    max-width: 292px;
+    width: 292px;
     height: 48px;
     display: block;
+    position: absolute;
+    top: 576px;
+    left: 35px;
   }
 
   .tk-footer-btns {
@@ -762,6 +767,141 @@
     letter-spacing: 0.02em;
     color: #FFFFFF;
   }
+
+  /* CALENDAR PAGE */
+  .tk-section-calendar {
+    width: 100%;
+    height: 100%;
+    padding: 60px 0 0 37px;
+  }
+
+  .tk-section-calendar .tk-container {
+    width: 323px;
+    height: auto;
+    display: block;
+  }
+
+  .tk-section-calendar .tk-container h1 {
+    height: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    margin-bottom: 21px;
+  }
+
+  .tk-section-calendar .tk-container .container {
+    width: 323px;
+    height: 53px;
+    gap: 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    margin-bottom: 25px;
+  }
+
+  .tk-section-calendar .tk-container .container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tk-section-calendar .tk-container .container .card {
+    min-width: 45px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  .tk-section-calendar .tk-btn-task {
+    width: 292px;
+    height: 22.22px;
+    display: flex;
+    gap: 6px;
+    margin-bottom: 24.78px;
+  }
+
+  .tk-section-calendar .tk-btn-task button {
+    width: 100px;
+    height: 22.22px;
+    display: block;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  .tk-section-calendar .tk-btn-task:first-child {
+    width: 80px;
+    height: 22.22px;
+  }
+
+  .tk-section-calendar .tk-tasks {
+    width: 286px;
+    height: 360px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+  }
+
+  .tk-section-calendar .tk-tasks .card-tasks {
+    width: 286px;
+    min-height: 77px;
+    display: block;
+    border-radius: 15px;
+    background: url('../images/icon\ _clock_.svg') no-repeat;
+    background-position: 22px 55px;
+    padding: 18px 10px 15px 22px;
+    background-color: #D1D0F9;
+  }
+
+  .tk-section-calendar .tk-tasks .card-tasks p {
+    height: 5px;
+    font-family: 'Poppins';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    color: #6368D9;
+    margin-bottom: 13px;
+  }
+
+  .tk-section-calendar .tk-tasks .card-tasks h1 {
+    height: 8px;
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    color: #6368D9;
+    margin-bottom: 10px;
+  }
+
+  .tk-section-calendar .tk-tasks .card-tasks h2 {
+    height: 8px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    margin-bottom: 18px;
+    margin-left: 20px;
+    color: #6368D9;
+  }
 }
 
 /* UTILITY CLASSES */
@@ -792,4 +932,9 @@
   line-height: 24px;
   letter-spacing: 0.02em;
   color: #6368D9;
+}
+
+.active {
+  background-color: #6368D9;
+  color: #F6F2FF;
 }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Calendar</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<section class="tk-section-calendar">
+			<div class="tk-container">
+				<h1 class="tk-color-purple">Today’s task</h1>
+				<div id="container" class="container">
+					<div class="card tk-color-white tk-bg-gray">1</div>
+					<div class="card tk-color-white tk-bg-gray">2</div>
+					<div class="card tk-color-white tk-bg-gray">3</div>
+					<div class="card tk-bg-purple tk-color-white">4</div>
+					<div class="card tk-color-white tk-bg-gray">5</div>
+					<div class="card tk-color-white tk-bg-gray">6</div>
+					<div class="card tk-color-white tk-bg-gray">7</div>
+					<div class="card tk-color-white tk-bg-gray">8</div>
+					<div class="card tk-color-white tk-bg-gray">9</div>
+					<div class="card tk-color-white tk-bg-gray">10</div>
+					<div class="card tk-color-white tk-bg-gray">11</div>
+				</div>
+			</div>
+
+			<div class="tk-btn-task">
+				<button class="active tk-bg-gray tk-color-purple">To do</button>
+				<button class="tk-bg-gray tk-color-purple">In progress</button>
+				<button class="tk-bg-gray tk-color-purple">Completed</button>
+			</div>
+
+			<div class="tk-tasks">
+					<div class="card-tasks ">
+						<p>College stuf</p>
+						<h1>Design and Documentation meeting</h1>
+						<h2>15.00 pm - 16.00 pm</h2>
+					</div>
+				</div>
+			</div>
+
+			<footer>
+				<div class="tk-footer-btns">
+					<button class="tk-footer-btns-menu" onclick="redirecionarParaHome()">
+						<img src="images/Footer/icon _home_.svg" alt="" />
+					</button>
+					<button class="tk-footer-btns-menu">
+						<img src="images/Footer/icon _Calendar_active.svg" alt="" />
+					</button>
+					<button class="tk-create-task" onclick="createTask()">
+						<img src="images/Footer/icon _plus circle_.svg" alt="" />
+					</button>
+					<button class="tk-footer-btns-menu">
+						<img src="images/Footer/icon _bell_.svg" alt="" />
+					</button>
+					<button class="tk-footer-btns-menu">
+						<img src="images/Footer/icon _profile circle_.svg" alt="" />
+					</button>
+				</div>
+			</footer>
+		</section>
+
+		<script src="js/main.js"></script>
+		<script>
+			imprimirDatas();
+		</script>
+	</body>
+</html>

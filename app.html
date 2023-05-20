@@ -56,7 +56,7 @@
 						</div>
 						<img src="images/HomePage/icon _work alt bag_.svg" alt="" />
 					</li>
-					<li class="tk-bg-gray">
+					<li class="tk-bg-gray tk-li-study">
 						<div class="tk-text-li">
 							<h1 class="tk-color-purple">Study</h1>
 							<p class="tk-color-purple" id="studyP"></p>
@@ -80,7 +80,7 @@
 					<li class="tk-bg-gray">
 						<div class="tk-text-li">
 							<h1 class="tk-color-purple">Home</h1>
-							<p class="tk-color-purple" id="homeP">36 tasks</p>
+							<p class="tk-color-purple" id="homeP"></p>
 						</div>
 						<img src="images/HomePage/icon _home outline_.svg" alt="" />
 					</li>
@@ -90,10 +90,14 @@
 			<footer>
 				<div class="tk-footer-btns">
 					<button class="tk-footer-btns-menu">
-						<img src="images/Footer/icon _home_.svg" alt="" />
+						<img src="images/Footer/icon _home_active.svg" alt="" />
 					</button>
 					<button class="tk-footer-btns-menu">
-						<img src="images/Footer/icon _Calendar_.svg" alt="" />
+						<img
+							src="images/Footer/icon _Calendar_.svg"
+							alt=""
+							onclick="redirecionarParaCalendar()"
+						/>
 					</button>
 					<button class="tk-create-task" onclick="createTask()">
 						<img src="images/Footer/icon _plus circle_.svg" alt="" />
