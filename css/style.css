@@ -855,10 +855,14 @@
     width: 286px;
     height: 360px;
     gap: 5px;
-    display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     overflow-y: scroll;
+  }
+
+
+  .tk-section-calendar .tk-tasks::-webkit-scrollbar {
+    display: none;
   }
 
   .tk-section-calendar .tk-tasks .card-tasks {

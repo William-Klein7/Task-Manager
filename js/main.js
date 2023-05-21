@@ -3,6 +3,7 @@ var categoryButtons = document.querySelectorAll('button[name="categories"]');
 var userLog = localStorage.getItem("UsuarioLogadoInfo");
 userLog = JSON.parse(userLog);
 var tasks = JSON.parse(localStorage.getItem("Tasks")) || [];
+var currentDate = new Date().toISOString().split("T")[0];
 
 categoryButtons.forEach(function (button) {
 	button.addEventListener("click", function () {
@@ -65,10 +66,6 @@ function saveTask() {
 	const description = document.getElementById("descriptionId").value;
 	const category = categoryValue();
 
-	var currentDate = new Date().toISOString().split("T")[0];
-
-	// Verifica se já existe uma tarefa com a mesma data e horário
-	var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 	var duplicateTask = tasks.find(function (task) {
 		return task.date === date && task.startTime === startTime;
 	});
@@ -101,6 +98,11 @@ function saveTask() {
 			category,
 			description
 		);
+		document.getElementById("titleId").value = "";
+		document.getElementById("dateId").value = "";
+		document.getElementById("startId").value = "";
+		document.getElementById("endId").value = "";
+		document.getElementById("descriptionId").value = "";
 		alert("Task salva com sucesso");
 	}
 }
@@ -168,15 +170,24 @@ function createTask() {
 }
 
 //HOME PAGE
-function loadingBar(perCent) {
+function loadingBar() {
 	const loadingBarId = document.getElementById("loadingBarId");
 	const loadingBarP = document.getElementById("loadingBarP");
+	const numberToDo = document.getElementById("NumberTasksToDoId");
+	let getQtdToDo = localStorage.getItem("QtdToDo");
+	getQtdToDo = JSON.parse(getQtdToDo);
+	let perCent = localStorage.getItem("perCent Completed:");
+	perCent = JSON.parse(perCent);
 	loadingBarId.style.width = perCent + "%";
 	loadingBarP.innerHTML = perCent + "% completed";
+	if (getQtdToDo == 0) {
+		numberToDo.innerHTML = "No have more tasks";
+	} else if (getQtdToDo == 1) {
+		numberToDo.innerHTML = "You have " + getQtdToDo + " more task to do!";
+	} else {
+		numberToDo.innerHTML = "You have " + getQtdToDo + " more tasks to do!";
+	}
 }
-loadingBar(100);
-
-function taskCounter(college, work, study, personal, social, home) {}
 
 function showName() {
 	const nameP = document.getElementById("nameP");
@@ -192,13 +203,61 @@ function showName() {
 	}
 	return;
 }
-showName();
+
+function countTasksByCategory() {
+	const collegeP = document.getElementById("collegeP");
+	const workP = document.getElementById("workP");
+	const studyP = document.getElementById("studyP");
+	const personalP = document.getElementById("personalP");
+	const socialP = document.getElementById("socialP");
+	const homeP = document.getElementById("homeP");
+	let college = 0;
+	let work = 0;
+	let study = 0;
+	let social = 0;
+	let personal = 0;
+	let home = 0;
+
+	var userTasks = tasks.filter(function (task) {
+		return task.email === userLog.email;
+	});
+
+	userTasks.forEach(function (task) {
+		var category = task.category;
+
+		if (category === "College stuff") {
+			return college++;
+		}
+		if (category === "Study") {
+			return study++;
+		}
+		if (category === "Work") {
+			return work++;
+		}
+		if (category === "Social life") {
+			return social++;
+		}
+		if (category === "Personal project") {
+			return personal++;
+		}
+		if (category === "Home") {
+			return home++;
+		}
+	});
+
+	collegeP.innerHTML = college + " tasks";
+	workP.innerHTML = work + " tasks";
+	studyP.innerHTML = study + " tasks";
+	personalP.innerHTML = personal + " tasks";
+	socialP.innerHTML = social + " tasks";
+	homeP.innerHTML = home + " tasks";
+}
 
 // CALENDAR PAGE:
 function imprimirDatas() {
 	var container = document.getElementById("container");
 	var cards = container.getElementsByClassName("card");
-	var currentDate = new Date();
+	let currentDate = new Date();
 	currentDate.setDate(currentDate.getDate() - 3); // Subtrai 3 dias
 
 	var monthNames = [
@@ -229,76 +288,34 @@ function imprimirDatas() {
 		}
 	}
 }
-imprimirDatas();
-
-function countTasksByCategory() {
-	const collegeP = document.getElementById("collegeP");
-	const workP = document.getElementById("workP");
-	const studyP = document.getElementById("studyP");
-	const personalP = document.getElementById("personalP");
-	const socialP = document.getElementById("socialP");
-	const homeP = document.getElementById("homeP");
-	let college = 0;
-	let work = 0;
-	let study = 0;
-	let social = 0;
-	let personal = 0;
-	let home = 0;
-
-	// Filtra as tarefas do usuário logado
-	var userTasks = tasks.filter(function (task) {
-		return task.email === userLog.email;
-	});
-
-	// Conta o número de tarefas em cada categoria
-	userTasks.forEach(function (task) {
-		var category = task.category;
-
-		if (category === "College stuf") {
-			return college++;
-		}
-		if (category === "Study") {
-			return study++;
-		}
-		if (category === "Work") {
-			return work++;
-		}
-		if (category === "Social life") {
-			return social++;
-		}
-		if (category === "Personal project") {
-			return personal++;
-		}
-		if (category === "Home") {
-			return home++;
-		}
-	});
-
-	collegeP.innerHTML = college + " tasks";
-	workP.innerHTML = work + " tasks";
-	studyP.innerHTML = study + " tasks";
-	personalP.innerHTML = personal + " tasks";
-	socialP.innerHTML = social + " tasks";
-	homeP.innerHTML = home + " tasks";
-}
 
 function showToDo() {
-	var currentDate = new Date().toISOString().split("T")[0];
-	var bruteDate = new Date();
-	var currentHour = bruteDate.getHours();
-	var currentMinutes = bruteDate.getMinutes();
-	var hourAndMinutes = currentHour + ":" + currentMinutes;
-	const container = document.getElementById("taskContainerId");
+	let currentDate = new Date().toISOString().split("T")[0];
+	let bruteDate = new Date();
+	let currentHour = bruteDate.getHours();
+	let currentMinutes = bruteDate.getMinutes();
+	let hourAndMinutes = currentHour + ":" + currentMinutes;
+	if (currentHour < 10) {
+		hourAndMinutes = "0" + currentHour + ":" + currentMinutes;
+	}
+	let container = document.getElementById("taskContainerId1");
+	let container2 = document.getElementById("taskContainerId2");
+	let container3 = document.getElementById("taskContainerId3");
+	let i = 0;
+	let j = 0;
+	let x = 0;
+	let sum = 0;
 
-	var userTasks = tasks.filter(function (task) {
+	let userTasks = tasks.filter(function (task) {
 		return task.email === userLog.email;
 	});
+	console.log(hourAndMinutes);
 	userTasks.forEach(function (task) {
-		var category = task.category;
-		var date = task.date;
-		var horaInicial = task.startTime;
-		var horaFinal = task.endTime;
-		var title = task.title;
+		let category = task.category;
+		let date = task.date;
+		let horaInicial = task.startTime;
+		let horaFinal = task.endTime;
+		let title = task.title;
 
 		if (horaInicial < 12) {
 			horaInicial += " am";
@@ -310,8 +327,12 @@ function showToDo() {
 		} else {
 			horaFinal += " pm";
 		}
+
 		if (date === currentDate) {
-			if (horaInicial >= hourAndMinutes) {
+			if (horaInicial > hourAndMinutes) {
+				x++;
+				localStorage.setItem("QtdToDo", x);
+				console.log("ToDo");
 				let element = document.createElement("div");
 				element.className = "card-tasks";
 				element.innerHTML =
@@ -329,9 +350,93 @@ function showToDo() {
 				container.appendChild(element);
 			}
 			if (horaInicial <= hourAndMinutes && horaFinal >= hourAndMinutes) {
-			}
-			if (hourAndMinutes <= horaFinal) {
+				j++;
+				console.log("InProgress");
+				let element = document.createElement("div");
+				element.className = "card-tasks";
+				element.innerHTML =
+					"<p>" +
+					category +
+					"</p>" +
+					"<h1>" +
+					title +
+					"</h1>" +
+					"<h2>" +
+					horaInicial +
+					" - " +
+					horaFinal +
+					"</h2>";
+				container2.appendChild(element);
 			}
 		}
+		if (hourAndMinutes > horaFinal) {
+			i++;
+			console.log("Completed");
+			let element = document.createElement("div");
+			element.className = "card-tasks";
+			element.innerHTML =
+				"<p>" +
+				category +
+				"</p>" +
+				"<h1>" +
+				title +
+				"</h1>" +
+				"<h2>" +
+				horaInicial +
+				" - " +
+				horaFinal +
+				"</h2>";
+			container3.appendChild(element);
+		}
 	});
+	sum = ((x + j) / (x + j + i)) * 100;
+	sum = 100 - sum;
+	localStorage.setItem("perCent Completed:", sum);
+}
+
+function activeToDo() {
+	const container = document.getElementById("taskContainerId1");
+	const container2 = document.getElementById("taskContainerId2");
+	const container3 = document.getElementById("taskContainerId3");
+	const toDo = document.getElementById("toDoId");
+	const inProgress = document.getElementById("inProgressId");
+	const completed = document.getElementById("completedId");
+
+	toDo.classList.add("active");
+	inProgress.classList.remove("active");
+	completed.classList.remove("active");
+	container.style.display = "flex";
+	container2.style.display = "none";
+	container3.style.display = "none";
+}
+function activeInProgress() {
+	const container = document.getElementById("taskContainerId1");
+	const container2 = document.getElementById("taskContainerId2");
+	const container3 = document.getElementById("taskContainerId3");
+	const toDo = document.getElementById("toDoId");
+	const inProgress = document.getElementById("inProgressId");
+	const completed = document.getElementById("completedId");
+
+	toDo.classList.remove("active");
+	inProgress.classList.add("active");
+	completed.classList.remove("active");
+	container.style.display = "none";
+	container2.style.display = "flex";
+	container3.style.display = "none";
+}
+
+function activeCompleted() {
+	const container = document.getElementById("taskContainerId1");
+	const container2 = document.getElementById("taskContainerId2");
+	const container3 = document.getElementById("taskContainerId3");
+	const toDo = document.getElementById("toDoId");
+	const inProgress = document.getElementById("inProgressId");
+	const completed = document.getElementById("completedId");
+
+	toDo.classList.remove("active");
+	inProgress.classList.remove("active");
+	completed.classList.add("active");
+	container.style.display = "none";
+	container2.style.display = "none";
+	container3.style.display = "flex";
 }

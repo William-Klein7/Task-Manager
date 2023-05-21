@@ -33,14 +33,14 @@
 			</div>
 
 			<div class="tk-btn-task">
-				<button class="active tk-bg-gray tk-color-purple">To do</button>
-				<button class="tk-bg-gray tk-color-purple">In progress</button>
-				<button class="tk-bg-gray tk-color-purple">Completed</button>
+				<button class="active tk-bg-gray tk-color-purple" onclick="activeToDo()" id="toDoId">To do</button>
+				<button class="tk-bg-gray tk-color-purple" onclick="activeInProgress()" id="inProgressId">In progress</button>
+				<button class="tk-bg-gray tk-color-purple" onclick="activeCompleted()" id="completedId">Completed</button>
 			</div>
 
-			<div class="tk-tasks" id="taskContainerId">
-
-				</div>
+			<div class="tk-tasks" id="taskContainerId1" style="display: flex;"></div>
+			<div class="tk-tasks" id="taskContainerId2" style="display: none;"></div>
+			<div class="tk-tasks" id="taskContainerId3" style="display: none;"></div>
 			</div>
 
 			<footer>

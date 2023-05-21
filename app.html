@@ -24,7 +24,7 @@
 				/>
 				<div class="tk-hello-text">
 					<h1 class="tk-color-purple">Hello</h1>
-					<p class="tk-color-purple" id="nameP">asdas</p>
+					<p class="tk-color-purple" id="nameP"></p>
 				</div>
 			</div>
 
@@ -35,7 +35,9 @@
 				<div class="tk-loading-bar">
 					<div id="loadingBarId"></div>
 				</div>
-				<h1 class="tk-color-white">You have 3 more tasks to do!</h1>
+				<h1 class="tk-color-white" id="NumberTasksToDoId">
+					You have 3 more tasks to do!
+				</h1>
 				<button class="tk-color-purple">Details</button>
 			</div>
 
@@ -114,6 +116,8 @@
 
 		<script src="js/main.js"></script>
 		<script>
+			showName();
+			loadingBar();
 			countTasksByCategory();
 		</script>
 	</body>
