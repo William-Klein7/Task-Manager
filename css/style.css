@@ -258,8 +258,10 @@
   }
 
   .tk-signup-page .tk-signup-form .tk-img-perfil {
-    width: 150px;
-    height: 150px;
+    max-width: 150px;
+    min-width: 150px;
+    max-height: 150px;
+    min-height: 150px;
     display: block;
 
   }
@@ -307,8 +309,10 @@
   }
 
   .tk-home-section .tk-hello-name img {
-    width: 44px;
-    height: 44px;
+    min-width: 44px;
+    max-width: 44px;
+    max-height: 44px;
+    min-height: 44px;
     display: inline-block;
     border: 1px solid #6368D9;
     border-radius: 50%;

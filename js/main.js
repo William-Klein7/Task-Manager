@@ -1,4 +1,8 @@
+// TASKS
 var categoryButtons = document.querySelectorAll('button[name="categories"]');
+var userLog = localStorage.getItem("UsuarioLogadoInfo");
+userLog = JSON.parse(userLog);
+var tasks = JSON.parse(localStorage.getItem("Tasks")) || [];
 
 categoryButtons.forEach(function (button) {
 	button.addEventListener("click", function () {
@@ -23,7 +27,15 @@ function categoryValue() {
 	return "";
 }
 
-function salvarTask(title, date, startTime, endTime, category, description) {
+function salvarTask(
+	email,
+	title,
+	date,
+	startTime,
+	endTime,
+	category,
+	description
+) {
 	var task = localStorage.getItem("Tasks");
 	if (task) {
 		task = JSON.parse(task);
@@ -31,6 +43,7 @@ function salvarTask(title, date, startTime, endTime, category, description) {
 		task = [];
 	}
 	var novaTask = {
+		email: email,
 		title: title,
 		date: date,
 		startTime: startTime,
@@ -52,6 +65,14 @@ function saveTask() {
 	const description = document.getElementById("descriptionId").value;
 	const category = categoryValue();
 
+	var currentDate = new Date().toISOString().split("T")[0];
+
+	// Verifica se já existe uma tarefa com a mesma data e horário
+	var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+	var duplicateTask = tasks.find(function (task) {
+		return task.date === date && task.startTime === startTime;
+	});
+
 	if (title === "") {
 		alert("Insira um título");
 	} else if (date === "") {
@@ -62,13 +83,29 @@ function saveTask() {
 		alert("Insira um tempo de fim");
 	} else if (category === "") {
 		alert("Selecione uma categoria");
+	} else if (startTime >= endTime) {
+		alert("A hora final deve ser maior que a hora inicial!");
+	} else if (date < currentDate) {
+		alert("A data não pode ser anterior à data atual!");
+	} else if (startTime >= endTime) {
+		alert("A hora final deve ser maior que a hora inicial!");
+	} else if (duplicateTask) {
+		alert("Já existe uma tarefa no mesmo dia e horário!");
 	} else {
-		salvarTask(title, date, startTime, endTime, category, description);
+		salvarTask(
+			userLog.email,
+			title,
+			date,
+			startTime,
+			endTime,
+			category,
+			description
+		);
+		alert("Task salva com sucesso");
 	}
 }
 
-//FUNÇÃO PARA VERIFICAR OS DADOS
-
+//LOGIN
 function verificarLogin() {
 	var usuarioLogado = localStorage.getItem("usuarioLogado");
 
@@ -119,6 +156,7 @@ function login() {
 	verificarCredenciais(email, password);
 }
 
+//REDIRECIONAMENTO
 function redirecionarParaHome() {
 	window.location.href = "app.html";
 }
@@ -129,7 +167,7 @@ function createTask() {
 	window.location.href = "modal.html";
 }
 
-//FUNÇÕES DA HOME
+//HOME PAGE
 function loadingBar(perCent) {
 	const loadingBarId = document.getElementById("loadingBarId");
 	const loadingBarP = document.getElementById("loadingBarP");
@@ -138,23 +176,7 @@ function loadingBar(perCent) {
 }
 loadingBar(100);
 
-function taskCounter(college, work, study, personal, social, home) {
-	const collegeP = document.getElementById("collegeP");
-	const workP = document.getElementById("workP");
-	const studyP = document.getElementById("studyP");
-	const personalP = document.getElementById("personalP");
-	const socialP = document.getElementById("socialP");
-	const homeP = document.getElementById("homeP");
-
-	console.log(collegeP);
-	collegeP.innerHTML = college + " tasks";
-	workP.innerHTML = work + " tasks";
-	studyP.innerHTML = study + " tasks";
-	personalP.innerHTML = personal + " tasks";
-	socialP.innerHTML = social + " tasks";
-	homeP.innerHTML = home + " tasks";
-}
-taskCounter(0, 0, 0, 0, 0, 0);
+function taskCounter(college, work, study, personal, social, home) {}
 
 function showName() {
 	const nameP = document.getElementById("nameP");
@@ -172,6 +194,7 @@ function showName() {
 }
 showName();
 
+// CALENDAR PAGE:
 function imprimirDatas() {
 	var container = document.getElementById("container");
 	var cards = container.getElementsByClassName("card");
@@ -207,3 +230,108 @@ function imprimirDatas() {
 	}
 }
 imprimirDatas();
+
+function countTasksByCategory() {
+	const collegeP = document.getElementById("collegeP");
+	const workP = document.getElementById("workP");
+	const studyP = document.getElementById("studyP");
+	const personalP = document.getElementById("personalP");
+	const socialP = document.getElementById("socialP");
+	const homeP = document.getElementById("homeP");
+	let college = 0;
+	let work = 0;
+	let study = 0;
+	let social = 0;
+	let personal = 0;
+	let home = 0;
+
+	// Filtra as tarefas do usuário logado
+	var userTasks = tasks.filter(function (task) {
+		return task.email === userLog.email;
+	});
+
+	// Conta o número de tarefas em cada categoria
+	userTasks.forEach(function (task) {
+		var category = task.category;
+
+		if (category === "College stuf") {
+			return college++;
+		}
+		if (category === "Study") {
+			return study++;
+		}
+		if (category === "Work") {
+			return work++;
+		}
+		if (category === "Social life") {
+			return social++;
+		}
+		if (category === "Personal project") {
+			return personal++;
+		}
+		if (category === "Home") {
+			return home++;
+		}
+	});
+
+	collegeP.innerHTML = college + " tasks";
+	workP.innerHTML = work + " tasks";
+	studyP.innerHTML = study + " tasks";
+	personalP.innerHTML = personal + " tasks";
+	socialP.innerHTML = social + " tasks";
+	homeP.innerHTML = home + " tasks";
+}
+
+function showToDo() {
+	var currentDate = new Date().toISOString().split("T")[0];
+	var bruteDate = new Date();
+	var currentHour = bruteDate.getHours();
+	var currentMinutes = bruteDate.getMinutes();
+	var hourAndMinutes = currentHour + ":" + currentMinutes;
+	const container = document.getElementById("taskContainerId");
+
+	var userTasks = tasks.filter(function (task) {
+		return task.email === userLog.email;
+	});
+	userTasks.forEach(function (task) {
+		var category = task.category;
+		var date = task.date;
+		var horaInicial = task.startTime;
+		var horaFinal = task.endTime;
+		var title = task.title;
+
+		if (horaInicial < 12) {
+			horaInicial += " am";
+		} else {
+			horaInicial += " pm";
+		}
+		if (horaFinal < 12) {
+			horaFinal += " am";
+		} else {
+			horaFinal += " pm";
+		}
+		if (date === currentDate) {
+			if (horaInicial >= hourAndMinutes) {
+				let element = document.createElement("div");
+				element.className = "card-tasks";
+				element.innerHTML =
+					"<p>" +
+					category +
+					"</p>" +
+					"<h1>" +
+					title +
+					"</h1>" +
+					"<h2>" +
+					horaInicial +
+					" - " +
+					horaFinal +
+					"</h2>";
+				container.appendChild(element);
+			}
+			if (horaInicial <= hourAndMinutes && horaFinal >= hourAndMinutes) {
+			}
+			if (hourAndMinutes <= horaFinal) {
+			}
+		}
+	});
+}
