@@ -125,6 +125,7 @@ function fazerLogin() {
 
 function fazerLogout() {
 	localStorage.removeItem("usuarioLogado");
+	localStorage.removeItem("UsuarioLogadoInfo");
 	window.location.href = "Login.html";
 }
 
@@ -138,7 +139,6 @@ function verificarCredenciais(email, senha) {
 		for (let i = 0; i < usuarios.length; i++) {
 			var usuario = usuarios[i];
 			if (usuario.email === email && usuario.senha === senha) {
-				console.log("Credenciais válidas. Usuário encontrado:", usuario);
 				usuario = JSON.stringify(usuario);
 				localStorage.setItem("UsuarioLogadoInfo", usuario);
 				fazerLogin();
@@ -168,6 +168,13 @@ function redirecionarParaCalendar() {
 function createTask() {
 	window.location.href = "modal.html";
 }
+function redirecionarParaProfile() {
+	window.location.href = "profile.html";
+}
+function redirecionarParaCalendarCompleted() {
+	window.location.href = "calendar.html";
+	activeCompleted();
+}
 
 //HOME PAGE
 function loadingBar() {
@@ -189,19 +196,17 @@ function loadingBar() {
 	}
 }
 
-function showName() {
+function showNameHome() {
 	const nameP = document.getElementById("nameP");
 	const picture = document.getElementById("pictureId");
 	let usuario = localStorage.getItem("UsuarioLogadoInfo");
 	usuario = JSON.parse(usuario);
-	console.log(usuario);
 	nameP.innerHTML = usuario.nome + "!";
 	if (usuario.foto === "") {
 		picture.src = "images/SignupPage/img-sem-foto.jpg";
 	} else {
 		picture.src = usuario.foto;
 	}
-	return;
 }
 
 function countTasksByCategory() {
@@ -258,7 +263,7 @@ function imprimirDatas() {
 	var container = document.getElementById("container");
 	var cards = container.getElementsByClassName("card");
 	let currentDate = new Date();
-	currentDate.setDate(currentDate.getDate() - 3); // Subtrai 3 dias
+	currentDate.setDate(currentDate.getDate() - 3);
 
 	var monthNames = [
 		"Jan",
@@ -281,16 +286,44 @@ function imprimirDatas() {
 		var day = currentDate.getDate();
 		card.innerHTML = month + " " + day;
 
-		currentDate.setDate(currentDate.getDate() + 1);
+		currentDate.setDate(day + 1);
 
 		if (i >= 11) {
 			break;
 		}
 	}
 }
+function getDate() {
+	let btnsDate = document.querySelectorAll(".container button");
+	let selectedDate = currentDate;
 
-function showToDo() {
-	let currentDate = new Date().toISOString().split("T")[0];
+	btnsDate.forEach(function (button) {
+		button.addEventListener("click", function () {
+			clearClassActive();
+			this.classList.add("active");
+			selectedDate = this.innerHTML;
+			let formattedDate = formatDate(selectedDate);
+			showToDo(formattedDate);
+		});
+	});
+
+	function clearClassActive() {
+		btnsDate.forEach(function (button) {
+			button.classList.remove("active");
+		});
+	}
+	function formatDate(dateString) {
+		let date = new Date(dateString);
+		let year = new Date().getFullYear();
+		let month = (date.getMonth() + 1).toString().padStart(2, "0");
+		let day = date.getDate().toString().padStart(2, "0");
+		let formattedDate = `${year}-${month}-${day}`;
+
+		return formattedDate;
+	}
+}
+
+function showToDo(selectedDate) {
 	let bruteDate = new Date();
 	let currentHour = bruteDate.getHours();
 	let currentMinutes = bruteDate.getMinutes();
@@ -304,12 +337,15 @@ function showToDo() {
 	let i = 0;
 	let j = 0;
 	let x = 0;
+	let p = 0;
 	let sum = 0;
+	container.innerHTML = "";
+	container2.innerHTML = "";
+	container3.innerHTML = "";
 
 	let userTasks = tasks.filter(function (task) {
 		return task.email === userLog.email;
 	});
-	console.log(hourAndMinutes);
 	userTasks.forEach(function (task) {
 		let category = task.category;
 		let date = task.date;
@@ -328,10 +364,49 @@ function showToDo() {
 			horaFinal += " pm";
 		}
 
-		if (date === currentDate) {
+		if (date > currentDate && date === selectedDate) {
+			console.log("ToDo");
+			if (date === selectedDate) {
+				let element = document.createElement("div");
+				element.className = "card-tasks";
+				element.innerHTML =
+					"<p>" +
+					category +
+					"</p>" +
+					"<h1>" +
+					title +
+					"</h1>" +
+					"<h2>" +
+					horaInicial +
+					" - " +
+					horaFinal +
+					"</h2>";
+				container.appendChild(element);
+			}
+		} else if (date < currentDate && date === selectedDate) {
+			p++;
+			console.log("Completed");
+			if (date === selectedDate) {
+				let element = document.createElement("div");
+				element.className = "card-tasks";
+				element.innerHTML =
+					"<p>" +
+					category +
+					"</p>" +
+					"<h1>" +
+					title +
+					"</h1>" +
+					"<h2>" +
+					horaInicial +
+					" - " +
+					horaFinal +
+					"</h2>";
+				container3.appendChild(element);
+			}
+		}
+		if (date === currentDate && date === selectedDate) {
 			if (horaInicial > hourAndMinutes) {
 				x++;
-				localStorage.setItem("QtdToDo", x);
 				console.log("ToDo");
 				let element = document.createElement("div");
 				element.className = "card-tasks";
@@ -368,75 +443,82 @@ function showToDo() {
 					"</h2>";
 				container2.appendChild(element);
 			}
-		}
-		if (hourAndMinutes > horaFinal) {
-			i++;
-			console.log("Completed");
-			let element = document.createElement("div");
-			element.className = "card-tasks";
-			element.innerHTML =
-				"<p>" +
-				category +
-				"</p>" +
-				"<h1>" +
-				title +
-				"</h1>" +
-				"<h2>" +
-				horaInicial +
-				" - " +
-				horaFinal +
-				"</h2>";
-			container3.appendChild(element);
+			if (hourAndMinutes > horaFinal) {
+				i++;
+				console.log("Completed");
+				let element = document.createElement("div");
+				element.className = "card-tasks";
+				element.innerHTML =
+					"<p>" +
+					category +
+					"</p>" +
+					"<h1>" +
+					title +
+					"</h1>" +
+					"<h2>" +
+					horaInicial +
+					" - " +
+					horaFinal +
+					"</h2>";
+				container3.appendChild(element);
+			}
 		}
 	});
 	sum = ((x + j) / (x + j + i)) * 100;
 	sum = 100 - sum;
+	localStorage.setItem("QtdToDo", x);
 	localStorage.setItem("perCent Completed:", sum);
+	localStorage.setItem("QtdCompleted", i + p);
 }
 
-function activeToDo() {
+function activeButton() {
+	let btns = document.querySelectorAll(".tk-btn-task button");
 	const container = document.getElementById("taskContainerId1");
 	const container2 = document.getElementById("taskContainerId2");
 	const container3 = document.getElementById("taskContainerId3");
-	const toDo = document.getElementById("toDoId");
-	const inProgress = document.getElementById("inProgressId");
-	const completed = document.getElementById("completedId");
 
-	toDo.classList.add("active");
-	inProgress.classList.remove("active");
-	completed.classList.remove("active");
-	container.style.display = "flex";
-	container2.style.display = "none";
-	container3.style.display = "none";
+	btns.forEach(function (button) {
+		button.addEventListener("click", function () {
+			clearClassActive();
+			this.classList.add("active");
+			if (button.id === "toDoId") {
+				container.style.display = "flex";
+				container2.style.display = "none";
+				container3.style.display = "none";
+			}
+			if (button.id === "inProgressId") {
+				container.style.display = "none";
+				container2.style.display = "flex";
+				container3.style.display = "none";
+			}
+			if (button.id === "completedId") {
+				container.style.display = "none";
+				container2.style.display = "none";
+				container3.style.display = "flex";
+			}
+		});
+	});
+
+	function clearClassActive() {
+		btns.forEach(function (button) {
+			button.classList.remove("active");
+		});
+	}
 }
-function activeInProgress() {
-	const container = document.getElementById("taskContainerId1");
-	const container2 = document.getElementById("taskContainerId2");
-	const container3 = document.getElementById("taskContainerId3");
-	const toDo = document.getElementById("toDoId");
-	const inProgress = document.getElementById("inProgressId");
-	const completed = document.getElementById("completedId");
 
-	toDo.classList.remove("active");
-	inProgress.classList.add("active");
-	completed.classList.remove("active");
-	container.style.display = "none";
-	container2.style.display = "flex";
-	container3.style.display = "none";
-}
+// PROFILE PAGE
+function showName() {
+	let pictureProf = document.getElementById("pictureProf");
+	let nameProf = document.getElementById("nameProf");
+	let occupationProf = document.getElementById("occupationProf");
+	let usuario = localStorage.getItem("UsuarioLogadoInfo");
+	usuario = JSON.parse(usuario);
 
-function activeCompleted() {
-	const container = document.getElementById("taskContainerId1");
-	const container2 = document.getElementById("taskContainerId2");
-	const container3 = document.getElementById("taskContainerId3");
-	const toDo = document.getElementById("toDoId");
-	const inProgress = document.getElementById("inProgressId");
-	const completed = document.getElementById("completedId");
-
-	toDo.classList.remove("active");
-	inProgress.classList.remove("active");
-	completed.classList.add("active");
-	container.style.display = "none";
-	container2.style.display = "none";
-	container3.style.display = "flex";
+	occupationProf.innerHTML = usuario.ocupacao;
+	nameProf.innerHTML = usuario.nome;
+	if (usuario.foto === "") {
+		pictureProf.src = "images/SignupPage/img-sem-foto.jpg";
+	} else {
+		pictureProf.src = usuario.foto;
+	}
 }

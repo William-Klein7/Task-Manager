@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Profile</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body>
+		<section class="tk-profile-section">
+			<p class="tk-color-purple">Profile</p>
+			<div class="tk-profile-name">
+				<img
+					src="images/SignupPage/img-sem-foto.jpg"
+					alt="Picture"
+					id="pictureProf"
+				/>
+				<div class="tk-profile-text">
+					<h1 class="tk-color-purple" id="nameProf"></h1>
+					<p class="tk-color-purple" id="occupationProf"></p>
+					<button class="tk-bg-gray tk-color-purple">Edit profile</button>
+				</div>
+			</div>
+
+			<div class="tk-box-profile">
+				<h2 class="tk-color-white">Amazing!</h2>
+				<h1 class="tk-color-white" id="NumberTotalCompleted">
+					You have completed 103 task!
+				</h1>
+				<button class="tk-color-purple" onclick="redirecionarParaCalendar()">
+					Details
+				</button>
+			</div>
+
+			<button class="tk-bg-gray tk-color-purple">
+				<img src="images/🦆 icon _User_.png" alt="" />
+				<p>Account information</p>
+			</button>
+			<button class="tk-bg-gray tk-color-purple">
+				<img src="images/🦆 icon _settings account more_.png" alt="" />
+				<p>Seetings</p>
+			</button>
+			<button class="tk-bg-gray tk-color-purple" onclick="fazerLogout()">
+				<img src="images/🦆 icon _log out_.png" alt="" />
+				<p>Log out</p>
+			</button>
+		</section>
+		<footer>
+			<div class="tk-footer-btns">
+				<button class="tk-footer-btns-menu" onclick="redirecionarParaHome()">
+					<img src="images/Footer/icon _home_.svg" alt="" />
+				</button>
+				<button class="tk-footer-btns-menu">
+					<img
+						src="images/Footer/icon _Calendar_.svg"
+						alt=""
+						onclick="redirecionarParaCalendar()"
+					/>
+				</button>
+				<button class="tk-create-task" onclick="createTask()">
+					<img src="images/Footer/icon _plus circle_.svg" alt="" />
+				</button>
+				<button class="tk-footer-btns-menu">
+					<img src="images/Footer/icon _bell_.svg" alt="" />
+				</button>
+				<button class="tk-footer-btns-menu">
+					<img
+						src="images/Footer/icon _profile circle_active.svg"
+						alt=""
+						onclick="redirecionarParaProfile()"
+					/>
+				</button>
+			</div>
+		</footer>
+
+		<script src="js/main.js"></script>
+		<script>
+			showName();
+		</script>
+	</body>
+</html>

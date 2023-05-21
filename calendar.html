@@ -18,24 +18,24 @@
 			<div class="tk-container">
 				<h1 class="tk-color-purple">Today’s task</h1>
 				<div id="container" class="container">
-					<div class="card tk-color-white tk-bg-gray">1</div>
-					<div class="card tk-color-white tk-bg-gray">2</div>
-					<div class="card tk-color-white tk-bg-gray">3</div>
-					<div class="card tk-bg-purple tk-color-white">4</div>
-					<div class="card tk-color-white tk-bg-gray">5</div>
-					<div class="card tk-color-white tk-bg-gray">6</div>
-					<div class="card tk-color-white tk-bg-gray">7</div>
-					<div class="card tk-color-white tk-bg-gray">8</div>
-					<div class="card tk-color-white tk-bg-gray">9</div>
-					<div class="card tk-color-white tk-bg-gray">10</div>
-					<div class="card tk-color-white tk-bg-gray">11</div>
+					<button onclick="getDate()" class="card tk-color-white tk-bg-gray"></button>
+					<button onclick="getDate()" class="card tk-color-white tk-bg-gray"></button>
+					<button onclick="getDate()" class="card tk-color-white tk-bg-gray"></button>
+					<button onclick="getDate()" class="card tk-color-white tk-bg-gray active" id="Btn-active"></button>
+					<button onclick="getDate()" class="card tk-color-white tk-bg-gray"></button>
+					<button onclick="getDate()" class="card tk-color-white tk-bg-gray"></button>
+					<button onclick="getDate()" class="card tk-color-white tk-bg-gray"></button>
+					<button onclick="getDate()" class="card tk-color-white tk-bg-gray"></button>
+					<button onclick="getDate()" class="card tk-color-white tk-bg-gray"></button>
+					<button onclick="getDate()" class="card tk-color-white tk-bg-gray"></button>
+					<button onclick="getDate()" class="card tk-color-white tk-bg-gray"></button>
 				</div>
 			</div>
 
 			<div class="tk-btn-task">
-				<button class="active tk-bg-gray tk-color-purple" onclick="activeToDo()" id="toDoId">To do</button>
-				<button class="tk-bg-gray tk-color-purple" onclick="activeInProgress()" id="inProgressId">In progress</button>
-				<button class="tk-bg-gray tk-color-purple" onclick="activeCompleted()" id="completedId">Completed</button>
+				<button class="active tk-bg-gray tk-color-purple" onclick="activeButton()" id="toDoId">To do</button>
+				<button class="tk-bg-gray tk-color-purple" onclick="activeButton()" id="inProgressId">In progress</button>
+				<button class="tk-bg-gray tk-color-purple" onclick="activeButton()" id="completedId">Completed</button>
 			</div>
 
 			<div class="tk-tasks" id="taskContainerId1" style="display: flex;"></div>
@@ -58,7 +58,7 @@
 						<img src="images/Footer/icon _bell_.svg" alt="" />
 					</button>
 					<button class="tk-footer-btns-menu">
-						<img src="images/Footer/icon _profile circle_.svg" alt="" />
+						<img src="images/Footer/icon _profile circle_.svg" alt="" onclick="redirecionarParaProfile()"/>
 					</button>
 				</div>
 			</footer>
@@ -67,7 +67,11 @@
 		<script src="js/main.js"></script>
 		<script>
 			imprimirDatas();
+			getDate();
+			activeButton();
 			showToDo();
+			var botao = document.getElementById("Btn-active");
+  		botao.click();
 		</script>
 	</body>
 </html>

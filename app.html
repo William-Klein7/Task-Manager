@@ -38,7 +38,9 @@
 				<h1 class="tk-color-white" id="NumberTasksToDoId">
 					You have 3 more tasks to do!
 				</h1>
-				<button class="tk-color-purple">Details</button>
+				<button class="tk-color-purple" onclick="redirecionarParaCalendar()">
+					Details
+				</button>
 			</div>
 
 			<p class="tk-color-purple tk-tags-categories-p">Task Categories</p>
@@ -94,12 +96,11 @@
 					<button class="tk-footer-btns-menu">
 						<img src="images/Footer/icon _home_active.svg" alt="" />
 					</button>
-					<button class="tk-footer-btns-menu">
-						<img
-							src="images/Footer/icon _Calendar_.svg"
-							alt=""
-							onclick="redirecionarParaCalendar()"
-						/>
+					<button
+						class="tk-footer-btns-menu"
+						onclick="redirecionarParaCalendar()"
+					>
+						<img src="images/Footer/icon _Calendar_.svg" alt="" />
 					</button>
 					<button class="tk-create-task" onclick="createTask()">
 						<img src="images/Footer/icon _plus circle_.svg" alt="" />
@@ -107,7 +108,10 @@
 					<button class="tk-footer-btns-menu">
 						<img src="images/Footer/icon _bell_.svg" alt="" />
 					</button>
-					<button class="tk-footer-btns-menu">
+					<button
+						class="tk-footer-btns-menu"
+						onclick="redirecionarParaProfile()"
+					>
 						<img src="images/Footer/icon _profile circle_.svg" alt="" />
 					</button>
 				</div>
@@ -116,7 +120,7 @@
 
 		<script src="js/main.js"></script>
 		<script>
-			showName();
+			showNameHome();
 			loadingBar();
 			countTasksByCategory();
 		</script>
