@@ -1069,6 +1069,91 @@
     letter-spacing: 0.02em;
     margin: auto 0;
   }
+
+  /* NOTIFICATION PAGE */
+  .tk-notification-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 56px 35px 0;
+  }
+
+  .tk-notification-section p {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    margin-bottom: 30px;
+  }
+
+  .tk-notification-section .tk-container-notification {
+    width: 100%;
+    max-height: 490px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    overflow-y: scroll;
+  }
+
+  .tk-notification-section .tk-container-notification::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tk-notification-section .tk-container-notification h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+
+  .tk-notification-section .tk-container-notification .tk-box-notification {
+    width: 288px;
+    height: 66px;
+    border-radius: 15px;
+    background-color: #D1D0F9;
+    color: #6368D9;
+    padding: 12px 25px 15px 14px;
+  }
+
+  .tk-notification-section .tk-container-notification .tk-box-notification-active {
+    width: 288px;
+    height: 66px;
+    border-radius: 15px;
+    padding: 12px 25px 15px 14px;
+    background-color: #6368D9;
+    color: #F6F2FF;
+  }
+
+  .tk-notification-section .tk-container-notification h2 {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    letter-spacing: 0.02em;
+    margin-bottom: 1px;
+  }
+
+  .tk-notification-section .tk-container-notification p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.02em;
+  }
+
+  .tk-notification-section .tk-container-notification span {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 10px;
+    letter-spacing: 0.02em
+  }
 }
 
 /* UTILITY CLASSES */

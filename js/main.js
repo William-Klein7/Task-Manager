@@ -205,6 +205,9 @@ function redirecionarParaCalendarCompleted() {
 function RedirecionamentoEditProfile() {
 	window.location.href = "editProfile.html";
 }
+function redirecionarParaNotification() {
+	window.location.href = "notification.html";
+}
 
 //HOME PAGE
 function loadingBar() {
