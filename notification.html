@@ -17,16 +17,8 @@
 	<body>
 		<section class="tk-notification-section">
 			<p class="tk-color-purple">Notifications</p>
-			<div class="tk-container-notification">
-				<h1 class="tk-color-purple">Today</h1>
-				<div class="tk-box-notification-active">
-					<h2>4 min ago</h2>
-					<p>
-						Shafa, your <span>Design and Documentation meeting</span> should
-						start right now.
-					</p>
-				</div>
-			</div>
+			<h1 class="tk-color-purple">Today</h1>
+			<div class="tk-container-notification" id="containerNotificationId"></div>
 		</section>
 
 		<footer>
@@ -58,6 +50,9 @@
 		</footer>
 
 		<script src="js/main.js"></script>
-		<script></script>
+		<script>
+			notificationCompleted();
+			addClassToFirstElement();
+		</script>
 	</body>
 </html>

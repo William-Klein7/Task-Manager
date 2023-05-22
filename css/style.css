@@ -1093,7 +1093,7 @@
     width: 100%;
     max-height: 490px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 7px;
     overflow-y: scroll;
   }
@@ -1102,13 +1102,23 @@
     display: none;
   }
 
-  .tk-notification-section .tk-container-notification h1 {
+  .tk-notification-section h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0.02em;
     margin-bottom: 8px;
+  }
+
+  .tk-first-element-ativado {
+    width: 288px;
+    height: 66px;
+    border-radius: 15px;
+    padding: 12px 25px 15px 14px;
+    background-color: #6368D9;
+    color: #F6F2FF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .tk-notification-section .tk-container-notification .tk-box-notification {
@@ -1120,14 +1130,7 @@
     padding: 12px 25px 15px 14px;
   }
 
-  .tk-notification-section .tk-container-notification .tk-box-notification-active {
-    width: 288px;
-    height: 66px;
-    border-radius: 15px;
-    padding: 12px 25px 15px 14px;
-    background-color: #6368D9;
-    color: #F6F2FF;
-  }
+
 
   .tk-notification-section .tk-container-notification h2 {
     font-family: 'Poppins', sans-serif;
@@ -1149,7 +1152,7 @@
 
   .tk-notification-section .tk-container-notification span {
     font-family: 'Poppins', sans-serif;
-    font-weight: 600;
+    font-weight: 800;
     font-size: 12px;
     line-height: 10px;
     letter-spacing: 0.02em

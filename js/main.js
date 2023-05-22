@@ -217,7 +217,9 @@ function loadingBar() {
 	let getQtdToDo = localStorage.getItem("QtdToDo");
 	getQtdToDo = JSON.parse(getQtdToDo);
 	let perCent = localStorage.getItem("perCent Completed:");
-	if (perCent === "null" || "NaN" || "undefined") {
+	perCent = JSON.parse(perCent);
+	console.log(perCent);
+	if (typeof perCent !== "number") {
 		loadingBarId.style.width = "0" + "%";
 		loadingBarP.innerHTML = "0" + "% completed";
 	} else {
@@ -429,7 +431,7 @@ function showToDo(selectedDate) {
 					injecaoCodigo(category, title, horaInicial, horaFinal)
 				);
 			}
-			if (horaInicial < hourAndMinutes && horaFinal > hourAndMinutes) {
+			if (horaInicial <= hourAndMinutes && horaFinal > hourAndMinutes) {
 				j++;
 				console.log("InProgress");
 				container2.appendChild(
@@ -564,4 +566,101 @@ function modificarUsuario() {
 
 	alert("Usuário modificado com sucesso!");
 	window.location.href = "Login.html";
+}
+
+// NOTIFICATION PAGE
+function notificationInProgress() {
+	let container = document.getElementById("containerNotificationId");
+}
+
+function notificationCompleted() {
+	let bruteDate = new Date();
+	let currentHour = bruteDate.getHours();
+	let currentMinutes = bruteDate.getMinutes();
+	if (currentHour < 10) {
+		currentHour = "0" + currentHour;
+	}
+	if (currentMinutes < 10) {
+		currentMinutes = "0" + currentMinutes;
+	}
+	let hourAndMinutes = currentHour + ":" + currentMinutes;
+	let container = document.getElementById("containerNotificationId");
+
+	let userTasks = tasks.filter(function (task) {
+		return task.email === userLog.email;
+	});
+	userTasks.forEach(function (task) {
+		let date = task.date;
+		let horaInicial = task.startTime;
+		let horaFinal = task.endTime;
+		let title = task.title;
+
+		if (date === currentDate) {
+			if (horaInicial <= hourAndMinutes && horaFinal > hourAndMinutes) {
+				let calcAgo = formatTimeDifference(hourAndMinutes, horaInicial);
+				console.log(calcAgo);
+				let element = document.createElement("div");
+				element.className = "tk-box-notification";
+				element.innerHTML =
+					"<h2>" +
+					calcAgo +
+					" ago</h2>" +
+					"<p>" +
+					userLog.nome +
+					",your <span>" +
+					title +
+					"</span> should start now.</p>";
+				container.appendChild(element);
+			}
+			if (horaInicial < hourAndMinutes && horaFinal < hourAndMinutes) {
+				let calcAgo = formatTimeDifference(hourAndMinutes, horaFinal);
+				let element = document.createElement("div");
+				element.className = "tk-box-notification";
+				element.innerHTML =
+					"<h2>" +
+					calcAgo +
+					" ago</h2>" +
+					"<p>Congrats,your <span>" +
+					title +
+					"</span> is now completed.</p>";
+				container.appendChild(element);
+			}
+		}
+	});
+}
+function formatTimeDifference(startTime, endTime) {
+	let start = new Date("2000-01-01 " + startTime);
+	let end = new Date("2000-01-01 " + endTime);
+
+	let difference = Math.round((start - end) / 1000 / 60);
+	let hours = Math.floor(difference / 60);
+	let minutes = difference % 60;
+
+	let formattedDifference = "";
+
+	if (hours > 0) {
+		formattedDifference += hours + "h";
+	}
+	if (minutes > 0) {
+		if (formattedDifference !== "") {
+			formattedDifference += " ";
+		}
+		formattedDifference += minutes + "min";
+	}
+	return formattedDifference;
+}
+
+function addClassToFirstElement() {
+	var container = document.getElementById("containerNotificationId");
+
+	if (container) {
+		var elements = container.getElementsByClassName("tk-box-notification");
+
+		if (elements.length > 0) {
+			var lastElementIndex = elements.length - 1;
+
+			elements[lastElementIndex].classList.add("tk-first-element-ativado");
+			elements[lastElementIndex].classList.remove("tk-box-notification");
+		}
+	}
 }
