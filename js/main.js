@@ -1,10 +1,20 @@
-// TASKS
 var categoryButtons = document.querySelectorAll('button[name="categories"]');
 var userLog = localStorage.getItem("UsuarioLogadoInfo");
 userLog = JSON.parse(userLog);
 var tasks = JSON.parse(localStorage.getItem("Tasks")) || [];
 var dateNew = new Date();
 var currentDate = formatDate(dateNew);
+
+//VALIDAÇÃO DA SENHA
+function validarSenha(senha) {
+	const regexSenha = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{6,})$/;
+
+	if (senha.match(regexSenha)) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
 //MODAL/CREATE TASK
 categoryButtons.forEach(function (button) {
@@ -116,7 +126,12 @@ function clearTasks() {
 function verificarLogin() {
 	var usuarioLogado = localStorage.getItem("usuarioLogado");
 
-	if (!usuarioLogado && window.location.pathname !== "/login.html") {
+	if (
+		!usuarioLogado &&
+		window.location.pathname !== "/login.html" &&
+		window.location.pathname !== "/signup.html" &&
+		window.location.pathname !== "/FirstPage.html"
+	) {
 		window.location.href = "login.html";
 	} else if (usuarioLogado && window.location.pathname === "/login.html") {
 		window.location.href = "app.html";
@@ -218,6 +233,15 @@ function modificarUsuario() {
 		arrUsuarios = JSON.parse(arrUsuarios);
 	} else {
 		arrUsuarios = [];
+	}
+	if (nome === "") {
+		return alert("Insira um nome");
+	} else if (occupation === "") {
+		return alert("Insira uma ocupação");
+	} else if (!validarSenha(senha)) {
+		return alert(
+			"Senha invalida, insira no minimo 6 caracteres,incluindo uma letra maiuscula,uma minuscula e um digito!"
+		);
 	}
 
 	for (var i = 0; i < arrUsuarios.length; i++) {

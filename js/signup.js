@@ -56,15 +56,6 @@ function validarOccupation(occupation) {
 		return false;
 	}
 }
-function validarSenha(senha) {
-	const regexSenha = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{6,})$/;
-
-	if (senha.match(regexSenha)) {
-		return true;
-	} else {
-		return false;
-	}
-}
 
 //FUNÇÃO PARA SALVAR OS DADOS INFORMADOS PELO USUARIO
 function salvarUsuario(nome, email, senha, ocupacao, foto) {
