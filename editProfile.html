@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Edit Profile</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body>
+		<section class="tk-signup-page">
+			<div class="tk-signup-title">
+				<div class="tk-signup-img">
+					<h1 class="tk-color-purple">Welcome</h1>
+				</div>
+			</div>
+			<form class="tk-signup-form">
+				<div class="tk-img-perfil">
+					<img
+						src="images/SignupPage/img-sem-foto.jpg"
+						alt="Perfil"
+						id="img-signup"
+					/>
+				</div>
+				<input class="tk-input-img" type="file" name="Image" id="foto" />
+				<input
+					class="tk-bg-gray"
+					type="text"
+					name="Name"
+					id="nameEdit"
+					placeholder="Name"
+				/>
+				<input
+					class="tk-bg-gray"
+					type="text"
+					name="Occupation"
+					id="occupationEdit"
+					placeholder="Occupation"
+				/>
+				<input
+					class="tk-bg-gray"
+					type="password"
+					name="Password"
+					id="passwordEdit"
+					placeholder="Password"
+				/>
+			</form>
+			<div class="tk-button-save">
+				<button
+					class="tk-bg-purple tk-color-white"
+					onclick="modificarUsuario()"
+				>
+					Save
+				</button>
+			</div>
+			<div class="tk-login">
+				<a href="profile.html">Cancel</a>
+			</div>
+		</section>
+		<script src="js/main.js"></script>
+		<script>
+			editProfile();
+		</script>
+	</body>
+</html>

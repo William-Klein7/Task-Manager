@@ -3,7 +3,27 @@ var categoryButtons = document.querySelectorAll('button[name="categories"]');
 var userLog = localStorage.getItem("UsuarioLogadoInfo");
 userLog = JSON.parse(userLog);
 var tasks = JSON.parse(localStorage.getItem("Tasks")) || [];
-var currentDate = new Date().toISOString().split("T")[0];
+var dateNew = new Date();
+var currentDate = formatDate(dateNew);
+
+function editProfile() {
+	const photo = document.getElementById("img-signup");
+	const file = document.getElementById("foto");
+	photo.addEventListener("click", () => {
+		file.click();
+	});
+
+	file.addEventListener("change", () => {
+		if (file.files.lenght <= 0) {
+			return;
+		}
+		let reader = new FileReader();
+		reader.onload = () => {
+			photo.src = reader.result;
+		};
+		reader.readAsDataURL(file.files[0]);
+	});
+}
 
 categoryButtons.forEach(function (button) {
 	button.addEventListener("click", function () {
@@ -66,7 +86,7 @@ function saveTask() {
 	const description = document.getElementById("descriptionId").value;
 	const category = categoryValue();
 
-	var duplicateTask = tasks.find(function (task) {
+	var taskDuplicada = tasks.find(function (task) {
 		return task.date === date && task.startTime === startTime;
 	});
 
@@ -86,7 +106,7 @@ function saveTask() {
 		alert("A data não pode ser anterior à data atual!");
 	} else if (startTime >= endTime) {
 		alert("A hora final deve ser maior que a hora inicial!");
-	} else if (duplicateTask) {
+	} else if (taskDuplicada) {
 		alert("Já existe uma tarefa no mesmo dia e horário!");
 	} else {
 		salvarTask(
@@ -98,13 +118,16 @@ function saveTask() {
 			category,
 			description
 		);
-		document.getElementById("titleId").value = "";
-		document.getElementById("dateId").value = "";
-		document.getElementById("startId").value = "";
-		document.getElementById("endId").value = "";
-		document.getElementById("descriptionId").value = "";
+		clearTasks();
 		alert("Task salva com sucesso");
 	}
+}
+function clearTasks() {
+	document.getElementById("titleId").value = "";
+	document.getElementById("dateId").value = "";
+	document.getElementById("startId").value = "";
+	document.getElementById("endId").value = "";
+	document.getElementById("descriptionId").value = "";
 }
 
 //LOGIN
@@ -126,6 +149,10 @@ function fazerLogin() {
 function fazerLogout() {
 	localStorage.removeItem("usuarioLogado");
 	localStorage.removeItem("UsuarioLogadoInfo");
+	localStorage.removeItem("QtdToDo");
+	localStorage.removeItem("QtdCompleted");
+	localStorage.removeItem("perCent Completed:");
+
 	window.location.href = "Login.html";
 }
 
@@ -175,6 +202,9 @@ function redirecionarParaCalendarCompleted() {
 	window.location.href = "calendar.html";
 	activeCompleted();
 }
+function RedirecionamentoEditProfile() {
+	window.location.href = "editProfile.html";
+}
 
 //HOME PAGE
 function loadingBar() {
@@ -184,10 +214,14 @@ function loadingBar() {
 	let getQtdToDo = localStorage.getItem("QtdToDo");
 	getQtdToDo = JSON.parse(getQtdToDo);
 	let perCent = localStorage.getItem("perCent Completed:");
-	perCent = JSON.parse(perCent);
-	loadingBarId.style.width = perCent + "%";
-	loadingBarP.innerHTML = perCent + "% completed";
-	if (getQtdToDo == 0) {
+	if (perCent === "null" || "NaN" || "undefined") {
+		loadingBarId.style.width = "0" + "%";
+		loadingBarP.innerHTML = "0" + "% completed";
+	} else {
+		loadingBarId.style.width = perCent + "%";
+		loadingBarP.innerHTML = perCent + "% completed";
+	}
+	if (getQtdToDo == 0 || "null" || "undefined" || "NaN") {
 		numberToDo.innerHTML = "No have more tasks";
 	} else if (getQtdToDo == 1) {
 		numberToDo.innerHTML = "You have " + getQtdToDo + " more task to do!";
@@ -312,25 +346,29 @@ function getDate() {
 			button.classList.remove("active");
 		});
 	}
-	function formatDate(dateString) {
-		let date = new Date(dateString);
-		let year = new Date().getFullYear();
-		let month = (date.getMonth() + 1).toString().padStart(2, "0");
-		let day = date.getDate().toString().padStart(2, "0");
-		let formattedDate = `${year}-${month}-${day}`;
-
-		return formattedDate;
-	}
 }
+function formatDate(dateString) {
+	let date = new Date(dateString);
+	let year = new Date().getFullYear();
+	let month = (date.getMonth() + 1).toString().padStart(2, "0");
+	let day = date.getDate().toString().padStart(2, "0");
+	let formattedDate = `${year}-${month}-${day}`;
 
+	return formattedDate;
+}
 function showToDo(selectedDate) {
 	let bruteDate = new Date();
 	let currentHour = bruteDate.getHours();
 	let currentMinutes = bruteDate.getMinutes();
-	let hourAndMinutes = currentHour + ":" + currentMinutes;
+
 	if (currentHour < 10) {
-		hourAndMinutes = "0" + currentHour + ":" + currentMinutes;
+		currentHour = "0" + currentHour;
 	}
+	if (currentMinutes < 10) {
+		currentMinutes = "0" + currentMinutes;
+	}
+	let hourAndMinutes = currentHour + ":" + currentMinutes;
+	console.log(hourAndMinutes);
 	let container = document.getElementById("taskContainerId1");
 	let container2 = document.getElementById("taskContainerId2");
 	let container3 = document.getElementById("taskContainerId3");
@@ -367,108 +405,65 @@ function showToDo(selectedDate) {
 		if (date > currentDate && date === selectedDate) {
 			console.log("ToDo");
 			if (date === selectedDate) {
-				let element = document.createElement("div");
-				element.className = "card-tasks";
-				element.innerHTML =
-					"<p>" +
-					category +
-					"</p>" +
-					"<h1>" +
-					title +
-					"</h1>" +
-					"<h2>" +
-					horaInicial +
-					" - " +
-					horaFinal +
-					"</h2>";
-				container.appendChild(element);
+				container.appendChild(
+					injecaoCodigo(category, title, horaInicial, horaFinal)
+				);
 			}
 		} else if (date < currentDate && date === selectedDate) {
 			p++;
 			console.log("Completed");
 			if (date === selectedDate) {
-				let element = document.createElement("div");
-				element.className = "card-tasks";
-				element.innerHTML =
-					"<p>" +
-					category +
-					"</p>" +
-					"<h1>" +
-					title +
-					"</h1>" +
-					"<h2>" +
-					horaInicial +
-					" - " +
-					horaFinal +
-					"</h2>";
-				container3.appendChild(element);
+				container3.appendChild(
+					injecaoCodigo(category, title, horaInicial, horaFinal)
+				);
 			}
 		}
 		if (date === currentDate && date === selectedDate) {
 			if (horaInicial > hourAndMinutes) {
 				x++;
 				console.log("ToDo");
-				let element = document.createElement("div");
-				element.className = "card-tasks";
-				element.innerHTML =
-					"<p>" +
-					category +
-					"</p>" +
-					"<h1>" +
-					title +
-					"</h1>" +
-					"<h2>" +
-					horaInicial +
-					" - " +
-					horaFinal +
-					"</h2>";
-				container.appendChild(element);
+				container.appendChild(
+					injecaoCodigo(category, title, horaInicial, horaFinal)
+				);
 			}
-			if (horaInicial <= hourAndMinutes && horaFinal >= hourAndMinutes) {
+			if (horaInicial < hourAndMinutes && horaFinal > hourAndMinutes) {
 				j++;
 				console.log("InProgress");
-				let element = document.createElement("div");
-				element.className = "card-tasks";
-				element.innerHTML =
-					"<p>" +
-					category +
-					"</p>" +
-					"<h1>" +
-					title +
-					"</h1>" +
-					"<h2>" +
-					horaInicial +
-					" - " +
-					horaFinal +
-					"</h2>";
-				container2.appendChild(element);
+				container2.appendChild(
+					injecaoCodigo(category, title, horaInicial, horaFinal)
+				);
 			}
 			if (hourAndMinutes > horaFinal) {
 				i++;
 				console.log("Completed");
-				let element = document.createElement("div");
-				element.className = "card-tasks";
-				element.innerHTML =
-					"<p>" +
-					category +
-					"</p>" +
-					"<h1>" +
-					title +
-					"</h1>" +
-					"<h2>" +
-					horaInicial +
-					" - " +
-					horaFinal +
-					"</h2>";
-				container3.appendChild(element);
+				container3.appendChild(
+					injecaoCodigo(category, title, horaInicial, horaFinal)
+				);
 			}
 		}
 	});
 	sum = ((x + j) / (x + j + i)) * 100;
 	sum = 100 - sum;
 	localStorage.setItem("QtdToDo", x);
-	localStorage.setItem("perCent Completed:", sum);
+	localStorage.setItem("perCent Completed:", parseFloat(sum.toFixed(1)));
 	localStorage.setItem("QtdCompleted", i + p);
+}
+function injecaoCodigo(category, title, horaInicial, horaFinal) {
+	let element = document.createElement("div");
+	element.className = "card-tasks";
+	element.innerHTML =
+		"<p>" +
+		category +
+		"</p>" +
+		"<h1>" +
+		title +
+		"</h1>" +
+		"<h2>" +
+		horaInicial +
+		" - " +
+		horaFinal +
+		"</h2>";
+	return element;
 }
 
 function activeButton() {
@@ -521,4 +516,49 @@ function showName() {
 	} else {
 		pictureProf.src = usuario.foto;
 	}
+}
+function showNumberTasksCompleted() {
+	const title = document.getElementById("NumberTotalCompleted");
+	var QtdCompleted = localStorage.getItem("QtdCompleted");
+
+	if ((QtdCompleted == 0 && QtdCompleted === "null") || "undefined") {
+		title.innerHTML = "You do not have task completed!";
+	} else if (QtdCompleted < 10 && QtdCompleted > 0) {
+		title.innerHTML = "You have completed 0" + QtdCompleted + " tasks!";
+	} else {
+		title.innerHTML = "You have completed " + QtdCompleted + " tasks!";
+	}
+}
+
+// EDIT PROFILE
+function modificarUsuario() {
+	var arrUsuarios = localStorage.getItem("Usuarios");
+	let senha = document.getElementById("passwordEdit").value;
+	let nome = document.getElementById("nameEdit").value;
+	let occupation = document.getElementById("occupationEdit").value;
+	let foto = document.getElementById("img-signup").src;
+
+	if (arrUsuarios) {
+		arrUsuarios = JSON.parse(arrUsuarios);
+	} else {
+		arrUsuarios = [];
+	}
+
+	for (var i = 0; i < arrUsuarios.length; i++) {
+		var usuario = arrUsuarios[i];
+		if (userLog.email === usuario.email) {
+			usuario.senha = senha;
+			usuario.nome = nome;
+			usuario.ocupacao = occupation;
+			usuario.foto = foto;
+		}
+	}
+
+	var arrUsuariosJSON = JSON.stringify(arrUsuarios);
+
+	localStorage.setItem("Usuarios", arrUsuariosJSON);
+	localStorage.setItem("UsuarioLogadoInfo", arrUsuariosJSON);
+
+	alert("Usuário modificado com sucesso!");
+	window.location.href = "Login.html";
 }

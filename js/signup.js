@@ -1,10 +1,6 @@
 const photo = document.getElementById("img-signup");
 const file = document.getElementById("foto");
-var arrName = [];
 var arrEmail = [];
-var arrOccupation = [];
-var arrPassword = [];
-var arrPicture = [];
 
 photo.addEventListener("click", () => {
 	file.click();
@@ -90,10 +86,8 @@ function salvarUsuario(nome, email, senha, ocupacao, foto) {
 
 		arrUsuarios.push(usuario);
 
-		// Converte o array de objetos para uma string JSON
 		var arrUsuariosJSON = JSON.stringify(arrUsuarios);
 
-		// Salva o array de usuários JSON no localStorage
 		localStorage.setItem("Usuarios", arrUsuariosJSON);
 
 		alert("Usuário salvo com sucesso!");
