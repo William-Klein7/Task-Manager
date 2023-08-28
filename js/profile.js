@@ -21,7 +21,7 @@ function showNumberTasksCompleted() {
 	QtdToDo = JSON.parse(QtdToDo);
 	QtdInProgress = JSON.parse(QtdInProgress);
 	QtdTotalTasks = JSON.parse(QtdTotalTasks);
-	let sub = QtdTotalTasks - QtdInProgress - QtdInProgress;
+	let sub = QtdTotalTasks - QtdToDo - QtdInProgress;
 
 	if (sub <= 0) {
 		title.innerHTML = "You do not have task completed!";
