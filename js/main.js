@@ -124,17 +124,18 @@ function clearTasks() {
 
 //LOGIN, LOGOUT E VERIFICAÇÃO DE LOGIN
 function verificarLogin() {
-	var usuarioLogado = localStorage.getItem("usuarioLogado");
-
+	var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+	const janela = window.location.pathname;
+	console.log(window.location.pathname);
 	if (
-		!usuarioLogado &&
-		window.location.pathname !== "/login.html" &&
-		window.location.pathname !== "/signup.html" &&
-		window.location.pathname !== "/FirstPage.html"
+		usuarioLogado ||
+		janela === "/login.html" ||
+		janela === "/signup.html" ||
+		janela === "/FirstPage.html"
 	) {
+		return;
+	} else {
 		window.location.href = "login.html";
-	} else if (usuarioLogado && window.location.pathname === "/login.html") {
-		window.location.href = "app.html";
 	}
 }
 
