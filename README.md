@@ -43,5 +43,5 @@ Se você deseja executar este projeto localmente, siga as etapas abaixo:
     Agora você pode abrir o arquivo `FirstPage.html` no seu navegador favorito para ver o projeto em ação.
 
 
-
+## 💡 Contribuição
 Se você deseja fazer contribuições ou adicionar recursos ao projeto, não hesite em fazer um fork do repositório, fazer suas alterações e enviar um pull request.
